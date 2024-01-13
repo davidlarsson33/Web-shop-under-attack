@@ -20,8 +20,8 @@ if (isset($_POST["submit"])) {
     $errors = $validator->validateFormData($_POST);
 
     if (sizeof($errors) == 0) {
-        // TODO:
-    }
+       // TODO:
+    } 
 }
 
 ?>
@@ -38,10 +38,14 @@ if (isset($_POST["submit"])) {
             <div class="col-12">
                 <label for="validationCustom02" class="form-label">Name</label>
 
-                <input required type="text" name="name" id="validationCustom02"
-                    value="<?php if (isset($_POST['name']))
-                        echo $_POST['name']; ?>"
-                    class="form-control <?php echo $errors['name'] ? 'is-invalid' : ''; ?>">
+                <input 
+                    required
+                    type="text" 
+                    name="name" 
+                    id="validationCustom02"
+                    value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>"
+                    class="form-control <?php echo $errors['name'] ? 'is-invalid' : ''; ?>"
+                >
 
                 <div class="invalid-feedback">
                     <?php echo $errors['name'] ?>
@@ -53,11 +57,15 @@ if (isset($_POST["submit"])) {
                 <label for="validationCustomUsername" class="form-label">Email</label>
                 <div class="input-group has-validation">
 
-                    <input type="text" required name="email" id="validationCustomUsername"
+                    <input 
+                        type="text" 
+                        required
+                        name="email"
+                        id="validationCustomUsername"
                         aria-describedby="inputGroupPrepend"
                         class="form-control <?php echo $errors['email'] ? 'is-invalid' : ''; ?>"
-                        value="<?php if (isset($_POST['email']))
-                            echo $_POST['email']; ?>">
+                        value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" 
+                    >
 
                     <div class="invalid-feedback">
                         <?php echo $errors['email'] ?>
@@ -70,11 +78,15 @@ if (isset($_POST["submit"])) {
                 <label for="validationCustomUsername" class="form-label">Password</label>
                 <div class="input-group has-validation">
 
-                    <input type="text" required name="password" id="validationCustomUsername"
-                        class="form-control <?php echo $errors['password'] ? 'is-invalid' : ''; ?>"
-                        value="<?php if (isset($_POST['password']))
-                            echo $_POST['password']; ?>"
-                        aria-describedby="inputGroupPrepend">
+                    <input 
+                        type="text" 
+                        required
+                        name="password"
+                        id="validationCustomUsername"
+                        class="form-control <?php echo $errors['password'] ? 'is-invalid' : ''; ?>" 
+                        value="<?php if (isset($_POST['password'])) echo $_POST['password']; ?>" 
+                        aria-describedby="inputGroupPrepend" 
+                    >
 
                     <div class="invalid-feedback">
                         <?php echo $errors['password'] ?>
@@ -87,11 +99,15 @@ if (isset($_POST["submit"])) {
                 <label for="validationCustomUsername" class="form-label">Repeat password</label>
                 <div class="input-group has-validation">
 
-                    <input type="text" required name="passwordRepeat"
+                    <input 
+                        type="text" 
+                        required
+                        name="passwordRepeat"
                         class="form-control <?php echo $errors['passwordRepeat'] ? 'is-invalid' : ''; ?>"
-                        id="validationCustomUsername" aria-describedby="inputGroupPrepend"
-                        value="<?php if (isset($_POST['passwordRepeat']))
-                            echo $_POST['passwordRepeat']; ?>">
+                        id="validationCustomUsername" 
+                        aria-describedby="inputGroupPrepend" 
+                        value="<?php if (isset($_POST['passwordRepeat'])) echo $_POST['passwordRepeat']; ?>" 
+                    >
 
                     <div class="invalid-feedback">
                         <?php echo $errors['passwordRepeat'] ?>
@@ -103,9 +119,13 @@ if (isset($_POST["submit"])) {
             <div class="col-12">
                 <div class="form-check">
 
-                    <input required
+                    <input 
+                        required
                         class="form-check-input <?php echo $errors['terms&conditions'] ? 'is-invalid' : ''; ?>"
-                        type="checkbox" name="terms&conditions" id="invalidCheck"  <?php if (isset($_POST['terms&conditions'])) echo "checked" ?>
+                        type="checkbox" 
+                        name="terms&conditions" 
+                        id="invalidCheck" 
+                        <?php if (isset($_POST['terms&conditions'])) echo "checked" ?>
                     >
 
                     <label class="form-check-label" for="invalidCheck">
