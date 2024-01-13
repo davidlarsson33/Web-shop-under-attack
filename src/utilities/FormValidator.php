@@ -69,41 +69,41 @@ class FormValidator
     private function containsUppercase($string)
     {
         if (!preg_match('@[A-Z]@', $string)) {
-            $this->appendToError("password", "no uppercase");
+            $this->appendToError("password", "Lacks an uppercase letter");
         }
     }
 
     private function containsLowercase($string)
     {
         if (!preg_match('@[a-z]@', $string)) {
-            $this->appendToError("password", "no lowercase");
+            $this->appendToError("password", "Lacks an lowercase letter");
         }
     }
     private function containsNumber($string)
     {
         if (!preg_match('@[0-9]@', $string)) {
-            $this->appendToError("password", "no number");
+            $this->appendToError("password", "Lacks a number");
         }
     }
 
     private function containsSpecialChars($string)
     {
         if (!preg_match('@[^\w]@', $string)) {
-            $this->appendToError("password", "no special chars");
+            $this->appendToError("password", "Lacks special characters");
         }
     }
 
     private function validPasswordLength($passwordStr, $required_length = 12)
     {
         if (!(strlen($passwordStr) >= $required_length)) {
-            $this->appendToError("password", "not long enough");
+            $this->appendToError("password", "Lacks a lenght of minimum 12 characters");
         }
     }
 
     private function appendToError($key, $value)
     {
         if ($this->errors[$key] != null) {
-            $this->errors[$key] = $this->errors[$key] . "\n" . $value;
+            $this->errors[$key] = $this->errors[$key] . "<br />"  . $value;
         } else {
             $this->errors[$key] = $value;
         }
