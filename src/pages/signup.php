@@ -1,7 +1,9 @@
 <?php
 include "../utilities/FormValidator.php";
-// Server side validation
+include "../db/SignUp.php";
+
 $errors = null;
+$showModal = null;
 
 if (isset($_POST["submit"])) {
 
@@ -9,8 +11,15 @@ if (isset($_POST["submit"])) {
     $errors = $validator->validateFormData($_POST);
 
     if (sizeof($errors) == 0) {
-        header('Location: login.php');
-        exit;
+        $db = new SignUp();
+        $userExists = $db -> userExists($_POST["email"]);
+
+        if($userExists){
+            $showModal = true;
+        } else{
+            header('Location: login.php');
+            exit;
+        }
     } 
 }
 ?>
@@ -28,6 +37,32 @@ if (isset($_POST["submit"])) {
 <body>
 
     <?php include "../components/navbar.php"; ?>
+
+    <!-- Modal -->
+    <div class="modal fade border-info" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+        <div class="modal-header pt-2 border-info">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Could not sign up</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-5 ">
+            Reason: Username is already taken
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <?php if ($showModal) : ?>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                myModal.show();
+            });
+        </script>
+    <?php endif; ?>
+
+     <!-- Modal -->
 
     <div class="container p-5" style="max-width:600px">
         <h1 class="border-bottom pb-2">Sign up!</h1>
