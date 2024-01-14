@@ -1,5 +1,4 @@
 <?php include "DatabaseHandler.php"; ?>
-
 <?php
 class SignUp extends DatabaseHandler
 {
