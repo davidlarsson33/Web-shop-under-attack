@@ -16,7 +16,14 @@ if (isset($_POST["submit"])) {
 
         if($userExists){
             $showModal = true;
+            
         } else{
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            $name = $_POST["name"];
+
+            $db -> signUp($name, $email, $password);
+
             header('Location: login.php');
             exit;
         }
