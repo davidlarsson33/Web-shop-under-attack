@@ -8,8 +8,9 @@ class SignUp extends DatabaseHandler
     //TODO: Close connection to db
     function signUp($name, $email, $password)
     {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $this->queryInsecure(
-            "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')"
+            "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashedPassword')"
         );
     }
 
