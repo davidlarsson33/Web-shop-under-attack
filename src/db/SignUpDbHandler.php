@@ -1,0 +1,24 @@
+<?php include "DatabaseHandler.php"; ?>
+<?php
+class SignUpDbHandler extends DatabaseHandler
+{
+    function __construct(){
+        parent::__construct();
+    }
+    //TODO: Close connection to db
+    function signUp($name, $email, $password)
+    {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $this->queryInsecure(
+            "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashedPassword')"
+        );
+    }
+
+    public function userExists($email)
+    {
+        $stmt = "SELECT EXISTS(SELECT 1 FROM users WHERE email = $email)";
+        $result = $this->queryInsecure($stmt);
+        return $result;
+    }
+}
+?>
