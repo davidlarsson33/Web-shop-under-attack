@@ -1,3 +1,14 @@
+<?php
+    include "../db/LoginDbHandler.php";
+
+    if(isset($_POST["submit"])){
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $db = new LoginDbHandler();
+        $db -> login($email, $password);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,22 +26,22 @@
 
     <div class="container" style="max-width:600px">
             <h2 class="border-bottom pb-2">Log in</h2>
-        <form>
+        <form action="login.php" method="POST">
             <div class="form-group mb-3">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Enter email">
 
             </div>
             <div class="form-group mb-3">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
 
             <div class="col-12">
                 <span> Not a member? <a href="/signup.php">Sign up</a></span>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </body>
