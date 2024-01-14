@@ -13,6 +13,41 @@
   <?php include "../components/navbar.php"; ?>
   <?php include "../components/main.php"; ?>
   <?php include "../components/pricing.php"; ?>
+  <?php include "../db/ReviewDbHandler.php"; ?>
+
+  <div class="container mt-3" style="min-height:500px">
+    <h1>Reviews</h1>
+
+    <?php
+      $db = new ReviewDbHandler();
+      $result = $db->fetchReviews();
+      
+      foreach ($result as $row){
+        $name =  $row["name"];
+        $review = $row["review"];
+        $create_at = $row["created_at"];
+
+        echo "
+          <div class='border border-primary rounded mb-3 mt-3'>
+            <div class='p-2'>
+              <h5>$name</h5> 
+              <h6>$create_at</h6> 
+              <div class='pt-2 pb-3'>
+                $review
+              </div>
+            </div>
+          </div>
+        ";
+      }
+    ?>
+
+    <form action="index.php">
+      <p><label for="w3review">Write your review!</label></p>
+      <textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
