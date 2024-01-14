@@ -1,14 +1,16 @@
-<?php include "database/DatabaseHandler.php"; ?>
-<?php include "database/DatabaseHandler.php"; ?>
+<?php include "DatabaseHandler.php"; ?>
 
 <?php
 class SignUp extends DatabaseHandler
 {
+    function __construct(){
+        parent::__construct();
+    }
     //TODO: Close connection to db
-    function signUp($email, $password, $name)
+    function signUp($name, $email, $password)
     {
         $this->queryInsecure(
-            "INSERT INTO users (email, password) VALUES ($email, $password)"
+            "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')"
         );
     }
 
@@ -16,8 +18,7 @@ class SignUp extends DatabaseHandler
     {
         $stmt = "SELECT EXISTS(SELECT 1 FROM users WHERE email = $email)";
         $result = $this->queryInsecure($stmt);
-        return $result->fetchColumn();
+        return $result;
     }
-
 }
 ?>
