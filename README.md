@@ -32,7 +32,14 @@ Reflected XSS attack
 DOM based XSS attack
 ====================
 
+==============
+Clickjacking
+==============
+1. Go to http://localhost:5000/click-jacker
 
+2. Click anywhere on the webpage
+
+"You will start to download malware" after the click
 
 ==============
 SQL Injection
