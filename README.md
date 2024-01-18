@@ -31,3 +31,20 @@ Reflected XSS attack
 ====================
 DOM based XSS attack
 ====================
+
+
+
+==============
+SQL Injection
+==============
+
+1. Go to the log in page and paste the following into the username-field:
+'; DELETE FROM users; --
+
+2. Click submit
+
+3. Go to phpAdmin and check the users-table @ http://localhost:8001/
+
+All the users have now been removed from the users table.
+
+
