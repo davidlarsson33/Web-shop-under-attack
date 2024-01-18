@@ -29,9 +29,11 @@
         <form action="login.php" method="POST">
             <div class="form-group mb-3">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Enter email">
-
+            <div>
+              
+            </div>
             </div>
             <div class="form-group mb-3">
                 <label for="exampleInputPassword1">Password</label>
