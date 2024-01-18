@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, render_template, request
 
 app = Flask(__name__)
 data = "D"
@@ -15,3 +15,12 @@ def attacker():
     file.close()
 
     return " "
+
+@app.route("/malware")
+def malware():
+    return render_template('malware.html')
+ 
+@app.route("/click-jacker")
+def click_jacker():
+    return render_template('clickJacking.html')
+ 
