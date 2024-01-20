@@ -28,6 +28,38 @@ Reflected XSS attack
 1. Go to the login page, paste in the following and submit:
 <script>alert("Reflected XSS");</script>
 
+====================
+Session hijacking
+====================
+In order for this to work a session token must be hijacked first. There is many ways this can be done. However, to keep things simple I have decided that it would be suitible to make use of the stored XSS attack to get a hold of a users session token for a user.
+
+PRE-ATTACK STAGE:
+1. Use chrome and seach for the "ModHeader" extention
+2. Add the extention to chrome
+3. Enable the extention to be used in icognito mode
+
+ATTACK STAGE:
+5. Open one chrome tab in regular mode
+6. Go to http://localhost/singup.php in the regular mode tab
+7. Make an account for the attacker
+8. Log in as the attacker
+9. Perform a stored XSS attack as outlined above 
+10. Log out the attacker
+
+9. Log in as a regular user @ http://localhost/login.php
+10. Go to the reviews-section @ http://localhost/reviews.php
+
+11. Make sure that the loged in user's session token has been hijacked by looking att the attackers phished_data.txt file. 
+12. Use ModHeader to append a HTTP header cookie field. Add this header to each and every HTTP request:
+Cookie = THE_HIJACKED_COOKIE_VALUE
+
+EXAMPLE: 
+Cookie = PHPSESSID=97507860b55c55846bf41675b7971e94
+
+NOTE: The attacker will send his own session token to himself as a part of the stored XSS attack phase. Make sure you use the victim's session token session hijacking attack.
+
+13. The attacker has now successfully hijacked a user's session and can perform any action that the authentic user can perform. The attacker can change the user's password, name or email adress. The attacker can even delete the user's account now.  
+
 
 ====================
 CSRF
