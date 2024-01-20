@@ -1,10 +1,6 @@
 from flask import Flask, jsonify, render_template, request
 
 app = Flask(__name__)
-data = "D"
-@app.route("/")
-def hello_world():
-    return "<p>Hellos, World!</p> " + data 
 
 @app.route("/attacker", methods = ['GET'])
 def attacker():
@@ -23,4 +19,8 @@ def malware():
 @app.route("/click-jacker")
 def click_jacker():
     return render_template('clickJacking.html')
+
+@app.route("/CSRF")
+def csrf():
+    return render_template('CSRF.html')
  

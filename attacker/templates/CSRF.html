@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div style="padding: 30px;">
+        <h1>CSRF</h1>
+        <p>Cross-Site Request Forgery (CSRF) is a type of security vulnerability that exploits the trust a website has
+            in a
+            user's browser. In a CSRF attack, a malicious actor tricks a user's browser into making an unwanted request
+            on a
+            web application where the user is authenticated. This can lead to unauthorized actions being performed on
+            behalf
+            of the victim without their knowledge or consent.</p>
+
+        <p>The attack usually involves crafting a malicious link or embedding a malicious script in a trusted website.
+            When
+            the victim clicks on the link or visits the compromised page, the browser sends a request to the target
+            website
+            with the user's credentials, effectively forging a request. CSRF attacks are particularly dangerous because
+            they
+            can result in actions like changing account settings, making financial transactions, or even deleting data.
+        </p>
+
+        <p>To prevent CSRF attacks, web developers implement anti-CSRF measures such as using unique tokens in forms,
+            employing the SameSite cookie attribute, and validating the origin of incoming requests. It's crucial for
+            both
+            developers and users to be aware of CSRF risks and take proactive measures to mitigate them, ensuring the
+            security and integrity of web applications.</p>
+
+        <p>
+            <span style="color:red; font-weight: bold;">This site performs a CSRF by sending a malicious request via an
+                img-tag</span>
+        </p>
+    </div>
+    <img src="http://localhost/delete.php" alt="">
+
+</body>
+
+</html>
