@@ -28,9 +28,13 @@ Reflected XSS attack
 1. Go to the login page, paste in the following and submit:
 <script>alert("Reflected XSS");</script>
 
+
 ====================
-DOM based XSS attack
+CSRF
 ====================
+
+1. Log in as a user at http://localhost/login.php
+2. Go the the attacker's URL in another tab: http://localhost:5000/CSRF
 
 ==============
 Clickjacking
