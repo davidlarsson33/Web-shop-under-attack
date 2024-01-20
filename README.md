@@ -39,18 +39,18 @@ PRE-ATTACK STAGE:
 3. Enable the extention to be used in icognito mode
 
 ATTACK STAGE:
-5. Open one chrome tab in regular mode
-6. Go to http://localhost/singup.php in the regular mode tab
-7. Make an account for the attacker
-8. Log in as the attacker
-9. Perform a stored XSS attack as outlined above 
-10. Log out the attacker
+4. Open one chrome tab in regular mode
+5. Go to http://localhost/singup.php in the regular mode tab
+6. Make an account for the attacker
+7. Log in as the attacker
+8. Perform a stored XSS attack as outlined above 
+9. Log out the attacker
 
-9. Log in as a regular user @ http://localhost/login.php
-10. Go to the reviews-section @ http://localhost/reviews.php
+10. Log in as a regular user @ http://localhost/login.php
+11. Go to the reviews-section @ http://localhost/reviews.php
 
-11. Make sure that the loged in user's session token has been hijacked by looking att the attackers phished_data.txt file. 
-12. Use ModHeader to append a HTTP header cookie field. Add this header to each and every HTTP request:
+12. Make sure that the loged in user's session token has been hijacked by looking att the attackers phished_data.txt file. 
+13. Use ModHeader to append a HTTP header cookie field. Add this header to each and every HTTP request:
 Cookie = THE_HIJACKED_COOKIE_VALUE
 
 EXAMPLE: 
@@ -58,7 +58,7 @@ Cookie = PHPSESSID=97507860b55c55846bf41675b7971e94
 
 NOTE: The attacker will send his own session token to himself as a part of the stored XSS attack phase. Make sure you use the victim's session token session hijacking attack.
 
-13. The attacker has now successfully hijacked a user's session and can perform any action that the authentic user can perform. The attacker can change the user's password, name or email adress. The attacker can even delete the user's account now.  
+14. The attacker has now successfully hijacked a user's session and can perform any action that the authentic user can perform. The attacker can change the user's password, name or email adress. The attacker can even delete the user's account now.  
 
 
 ====================
