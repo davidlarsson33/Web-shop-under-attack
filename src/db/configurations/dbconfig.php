@@ -3,8 +3,8 @@
 return [
     'host' => 'db',
     'port' => 3306,
-    'user' => 'db-username',
-    'charset' => 'itf8mb4',
+    'dbname' => 'dbname',
+    'charset' => 'utf8mb4',
 ];
 
 ?>
