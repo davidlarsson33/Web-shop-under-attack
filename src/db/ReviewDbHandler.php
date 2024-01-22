@@ -1,14 +1,13 @@
-<?php include "DatabaseHandler.php"; ?>
+<?php include "SingletonDbHandler.php"; ?>
 
 <?php
-class ReviewDbHandler
+class ReviewDbHandler extends SingletonDbHandler
 {
-    private DatabaseHandler $db;
+   
     function __construct($config, $username, $password)
     {
-        $this->db = DatabaseHandler::getInstance($config, $username, $password);
+       parent::__construct($config, $username, $password);
     }
-
     function fetchReviews()
     {
         $stmt = "SELECT * FROM reviews;";

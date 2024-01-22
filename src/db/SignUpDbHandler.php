@@ -1,10 +1,10 @@
-<?php include "DatabaseHandler.php"; ?>
+<?php include "SingletonDbHandler.php"; ?>
 <?php
-class SignUpDbHandler
+class SignUpDbHandler extends SingletonDbHandler
 {
-    private $db;
-    function __construct($config, $username, $password ){
-        $this -> db = DatabaseHandler::getInstance($config, $username, $password );
+    function __construct($config, $username, $password)
+    {
+       parent::__construct($config, $username, $password);
     }
 
     //TODO: Close connection to db
@@ -14,7 +14,6 @@ class SignUpDbHandler
         $this -> db -> queryInsecure(
             "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashedPassword')"
         );
-
     }
 
     public function userExists($email)

@@ -1,11 +1,11 @@
-<?php include "DatabaseHandler.php"; ?>
+<?php include "SingletonDbHandler.php" ?>
 <?php
-class LoginDbHandler
+class LoginDbHandler extends SingletonDbHandler
 {
-    private $db;
+
     function __construct($config, $username, $password)
     {
-        $this->db = DatabaseHandler::getInstance($config, $username, $password);
+       parent::__construct($config, $username, $password);
     }
 
     function login($email, $password)
