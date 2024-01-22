@@ -2,9 +2,11 @@
 <?php
 class SignUpDbHandler extends DatabaseHandler
 {
-    function __construct(){
-        parent::__construct();
+
+    function __construct($config, $username, $password ){
+        parent::__construct($config, $username, $password );
     }
+
     //TODO: Close connection to db
     function signUp($name, $email, $password)
     {

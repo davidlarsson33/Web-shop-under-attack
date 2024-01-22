@@ -1,26 +1,26 @@
 <?php
 class DatabaseHandler
 {
-
     private $db;
 
-    function __construct()
+    function __construct($config, $username, $password )
     {
-        require "dbconfig.php";
-        $this->db = $this->connect($host, $db, $user, $password);
+        $dsn = 'mysql:' . http_build_query($config, '', ';');
+        // $user = 'db-username';
+        // $password = 'db-password';
+
+        $this->db = $this->connect($dsn, $username, $password);
     }
 
-    private function connect($host, $db, $user, $password)
-    {
 
-        $dsn = "mysql:host=$host;dbname=$db;charset=UTF8";
+    private function connect($dsn, $user, $password)
+    {
 
         try {
             $pdo = new PDO($dsn, $user, $password);
             return $pdo;
 
         } catch (PDOException $e) {
-            echo $e->getMessage();
             return null;
         }
     }
@@ -31,6 +31,4 @@ class DatabaseHandler
         return $stmt;
     }
 }
-
-
 ?>

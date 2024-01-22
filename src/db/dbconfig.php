@@ -1,6 +1,10 @@
-<?php 
-    $host = 'db';
-    $db = 'dbname';
-    $user = 'db-username';
-    $password = 'db-password';
+<?php
+
+return [
+    'host' => 'db',
+    'port' => 3306,
+    'user' => 'db-username',
+    'charset' => 'itf8mb4',
+];
+
 ?>
