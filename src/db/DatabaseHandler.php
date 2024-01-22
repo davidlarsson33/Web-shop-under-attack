@@ -1,27 +1,35 @@
 <?php
 class DatabaseHandler
 {
+    private static $instance;
     private $db;
 
-    function __construct($config, $username, $password )
+    private function __construct($config, $username, $password)
     {
         $dsn = 'mysql:' . http_build_query($config, '', ';');
-        // $user = 'db-username';
-        // $password = 'db-password';
 
         $this->db = $this->connect($dsn, $username, $password);
     }
 
+    static function getInstance($config, $username, $password)
+    {
+        if (self::$instance === null) {
+            self::$instance = new DatabaseHandler($config, $username, $password);
+        }
 
-    private function connect($dsn, $user, $password)
+        return self::$instance;
+    }
+
+    private function connect($dsn, $username, $password)
     {
 
         try {
-            $pdo = new PDO($dsn, $user, $password);
+            $pdo = new PDO($dsn, $username, $password);
             return $pdo;
 
         } catch (PDOException $e) {
-            return null;
+            echo "Could not connect to db. Error: $e";
+            die();
         }
     }
 

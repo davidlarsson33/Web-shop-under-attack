@@ -1,14 +1,19 @@
 <?php include "DatabaseHandler.php"; ?>
 <?php
-class LoginDbHandler extends DatabaseHandler
+class LoginDbHandler
 {
+    private $db;
+    function __construct($config, $username, $password)
+    {
+        $this->db = DatabaseHandler::getInstance($config, $username, $password);
+    }
 
     function login($email, $password)
     {
 
         // Not secure. User input is not sanitized/escaped
         $stmt = "SELECT password FROM users WHERE email = '$email'";
-        $result = $this->queryInsecure($stmt);
+        $result = $this->db->queryInsecure($stmt);
         $error = null;
 
         if (is_bool($result)) {

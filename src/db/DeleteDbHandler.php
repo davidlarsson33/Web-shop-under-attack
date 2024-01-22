@@ -1,12 +1,17 @@
 <?php include "DatabaseHandler.php"; ?>
 <?php
-class DeleteDbHandler extends DatabaseHandler
+class DeleteDbHandler
 {
+    private $db;
+    function __construct($config, $username, $password)
+    {
+        $this->db = DatabaseHandler::getInstance($config, $username, $password);
+    }
 
     function delete($email)
     {
         $stmt = "DELETE FROM users WHERE email = '$email'";
-        $this->queryInsecure($stmt);
+        $this->db->queryInsecure($stmt);
     }
 }
 ?>
