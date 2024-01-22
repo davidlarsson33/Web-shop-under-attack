@@ -2,12 +2,9 @@
 session_start();
 ?>
 
-<!doctype html>
-<html lang="en">
+<?php include "../partials/navbar.php"; ?>
 
-  <?php include "../components/navbar.php"; ?>
-
-  <section id="intro" class="p-4">
+<section id="intro" class="p-4">
     <div class="container-lg mt-3">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-7 text-center text-md-start">
@@ -25,7 +22,4 @@ session_start();
     </div>
 </section>
 
-<?php include "../components/footer.php"; ?>
-  
-
-</html>
+<?php include "../partials/footer.php"; ?>

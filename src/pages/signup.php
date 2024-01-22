@@ -1,7 +1,7 @@
 <?php
 include "../utilities/FormValidator.php";
-include "../db/SignUp.php";
-
+include "../db/SignUpDbHandler.php";
+session_start();
 $errors = null;
 $showModal = null;
 
@@ -10,8 +10,8 @@ if (isset($_POST["submit"])) {
     $validator = new FormValidator();
     $errors = $validator->validateFormData($_POST);
 
-    if (sizeof($errors) == 0) {
-        $db = new SignUp();
+    if (sizeof($errors) === 0) {
+        $db = new SignUpDbHandler(require "../db/configurations/dbconfig.php", 'db-username', 'db-password');
         $userExists = $db -> userExists($_POST["email"]);
 
         if($userExists){
@@ -24,26 +24,15 @@ if (isset($_POST["submit"])) {
 
             $db -> signUp($name, $email, $password);
 
-            header('Location: login.php');
+            header('Location: login');
             exit;
         }
     } 
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
 
-<body>
-
-    <?php include "../components/navbar.php"; ?>
+<?php include "../partials/navbar.php"; ?>
 
     <!-- Modal -->
     <div class="modal fade border-info" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -74,7 +63,7 @@ if (isset($_POST["submit"])) {
     <div class="container p-5" style="max-width:600px">
         <h1 class="border-bottom pb-2">Sign up!</h1>
 
-        <form class="row g-3 needs-validation" novalidate action="signup.php" method="POST">
+        <form class="row g-3 needs-validation" novalidate action="signup" method="POST">
 
             <div class="col-12">
                 <label for="validationCustom02" class="form-label">Name</label>
@@ -85,11 +74,11 @@ if (isset($_POST["submit"])) {
                     name="name" 
                     id="validationCustom02"
                     value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>"
-                    class="form-control <?php echo $errors['name'] ? 'is-invalid' : ''; ?>"
+                    class="form-control <?= $errors['name'] ? 'is-invalid' : ''; ?>"
                 >
 
                 <div class="invalid-feedback">
-                    <?php echo $errors['name'] ?>
+                    <?= $errors['name'] ?>
                 </div>
 
             </div>
@@ -104,12 +93,12 @@ if (isset($_POST["submit"])) {
                         name="email"
                         id="validationCustomUsername"
                         aria-describedby="inputGroupPrepend"
-                        class="form-control <?php echo $errors['email'] ? 'is-invalid' : ''; ?>"
+                        class="form-control <?= $errors['email'] ? 'is-invalid' : ''; ?>"
                         value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" 
                     >
 
                     <div class="invalid-feedback">
-                        <?php echo $errors['email'] ?>
+                        <?= $errors['email'] ?>
                     </div>
 
                 </div>
@@ -124,13 +113,13 @@ if (isset($_POST["submit"])) {
                         required
                         name="password"
                         id="validationCustomUsername"
-                        class="form-control <?php echo $errors['password'] ? 'is-invalid' : ''; ?>" 
+                        class="form-control <?= $errors['password'] ? 'is-invalid' : ''; ?>" 
                         value="<?php if (isset($_POST['password'])) echo $_POST['password']; ?>" 
                         aria-describedby="inputGroupPrepend" 
                     >
 
                     <div class="invalid-feedback">
-                        <?php echo $errors['password'] ?>
+                        <?= $errors['password'] ?>
                     </div>
 
                 </div>
@@ -144,14 +133,14 @@ if (isset($_POST["submit"])) {
                         type="text" 
                         required
                         name="passwordRepeat"
-                        class="form-control <?php echo $errors['passwordRepeat'] ? 'is-invalid' : ''; ?>"
+                        class="form-control <?= $errors['passwordRepeat'] ? 'is-invalid' : ''; ?>"
                         id="validationCustomUsername" 
                         aria-describedby="inputGroupPrepend" 
                         value="<?php if (isset($_POST['passwordRepeat'])) echo $_POST['passwordRepeat']; ?>" 
                     >
 
                     <div class="invalid-feedback">
-                        <?php echo $errors['passwordRepeat'] ?>
+                        <?= $errors['passwordRepeat'] ?>
                     </div>
 
                 </div>
@@ -162,7 +151,7 @@ if (isset($_POST["submit"])) {
 
                     <input 
                         required
-                        class="form-check-input <?php echo $errors['terms&conditions'] ? 'is-invalid' : ''; ?>"
+                        class="form-check-input <?= $errors['terms&conditions'] ? 'is-invalid' : ''; ?>"
                         type="checkbox" 
                         name="terms&conditions" 
                         id="invalidCheck" 
@@ -174,7 +163,7 @@ if (isset($_POST["submit"])) {
                     </label>
 
                     <div class="invalid-feedback">
-                        <?php echo $errors['terms&conditions'] ?>
+                        <?= $errors['terms&conditions'] ?>
                     </div>
 
                 </div>
@@ -187,6 +176,4 @@ if (isset($_POST["submit"])) {
         </form>
     </div>
 
-</body>
-
-</html>
+<?php include "../partials/footer.php"; ?>

@@ -1,14 +1,13 @@
 <?php session_start(); ?>
 
-<!DOCTYPE html>
+<?php include "../partials/navbar.php"; ?>
+
 
 <style>
     .form-item {
         margin: 20px 0;
     }
 </style>
-<html lang="en">
-<?php include "../components/navbar.php"; ?>
 
 <div class="container d-flex flex-column mt-5" style="max-width:600px">
     <h1>
@@ -19,12 +18,12 @@
 
         <div class="form-item">
             <label for="">Username</label>
-            <input type="text" class="form-control text-muted" value="<?php echo $_SESSION["user"] ?>">
+            <input type="text" class="form-control text-muted" value="<?= $_SESSION["user"] ?>">
         </div>
 
         <div class="form-item">
             <label for="">Email</label>
-            <input type="text" class="form-control" value="<?php echo $_SESSION["email"] ?>">
+            <input type="text" class="form-control" value="<?= $_SESSION["email"] ?>">
         </div>
 
         <div class="form-item">
@@ -42,11 +41,11 @@
         </div>
     </form>
 
-    <button class="btn btn-danger mt-3">Delete account</button>
+    <form action="delete.php" metho="POST">
+        <button class="btn btn-danger mt-3">Delete account</button>
+    </form>
 
 </div>
 
 
-<?php include "../components/footer.php"; ?>
-
-</html>
+<?php include "../partials/footer.php"; ?>

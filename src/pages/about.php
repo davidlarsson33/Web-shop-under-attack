@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include "../components/navbar.php"; ?>
+<?php session_start(); ?>
+
+<?php include "../partials/navbar.php"; ?>
 
 <div class="container p-5 ">
     <h2>About</h2>
@@ -35,13 +35,7 @@
         creativity resonate in your life.
     </p>
 
-
-
-
 </div>
 
-<?php include "../components/footer.php"; ?>
+<?php include "../partials/footer.php"; ?>
 
-</body>
-
-</html>
