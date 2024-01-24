@@ -1,0 +1,4 @@
+USERNAME                        PASSWORD
+david@gmail.com                 123AC!asdasdasd
+kenneth@gmail.com               123AC!asdasdasd
+attacker@malicious.com          XSS!1234!xss
