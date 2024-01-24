@@ -1,12 +1,12 @@
 <?php session_start(); ?>
 
-<?php include "../partials/navbar.php"; ?>
+<?php include base_path("src/partials/navbar.php"); ?>
 
 <div class="container p-5 ">
     <h2>About</h2>
 
     <div class="container ps-5">
-        <img src="notes.png" alt="" style="float: right; max-height: 400px; padding-left: 10px;">
+        <img src="/assets/lesson.png" alt="" style="float: right; max-height: 300px; padding-left: 10px;">
     </div>
     <p>
         Meet me, a passionate and skilled guitar virtuoso dedicated to sharing the joy of music through online
@@ -36,6 +36,4 @@
     </p>
 
 </div>
-
-<?php include "../partials/footer.php"; ?>
-
+<?php include base_path("src/partials/footer.php"); ?>

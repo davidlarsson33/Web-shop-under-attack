@@ -1,4 +1,4 @@
-<?php include "SingletonDbHandler.php"; ?>
+<?php include base_path("src/db/SingletonDbHandler.php"); ?>
 <?php
 class SignUpDbHandler extends SingletonDbHandler
 {

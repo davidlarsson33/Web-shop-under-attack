@@ -1,7 +1,6 @@
 <?php session_start(); ?>
 
-<?php include "../partials/navbar.php"; ?>
-
+<?php include base_path("src/partials/navbar.php"); ?>
 
 <style>
     .form-item {
@@ -10,9 +9,7 @@
 </style>
 
 <div class="container d-flex flex-column mt-5" style="max-width:600px">
-    <h1>
-        Account
-    </h1>
+    <h1>Account</h1>
 
     <form action="">
 
@@ -48,4 +45,4 @@
 </div>
 
 
-<?php include "../partials/footer.php"; ?>
+<?php include base_path("src/partials/footer.php"); ?>

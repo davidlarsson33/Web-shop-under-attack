@@ -13,7 +13,7 @@ class DatabaseHandler
 
     static function getInstance($config, $username, $password)
     {
-        if (self::$instance === null) {
+        if (is_null(self::$instance)) {
             self::$instance = new DatabaseHandler($config, $username, $password);
         }
 

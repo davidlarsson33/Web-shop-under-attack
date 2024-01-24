@@ -1,4 +1,4 @@
-<?php include "SingletonDbHandler.php" ?>
+<?php require_once base_path("src/db/SingletonDbHandler.php"); ?>
 <?php
 class LoginDbHandler extends SingletonDbHandler
 {
@@ -19,9 +19,9 @@ class LoginDbHandler extends SingletonDbHandler
         if (is_bool($result)) {
             return false;
 
-        } else if ($result->rowCount() === 0) {
+        } else if (empty($result->rowCount())) {
             $error = "Username '$email' or password is incorrect!"; // used for XSS
-
+            echo $email;
         } else {
             $storedHash = $result->fetch(PDO::FETCH_ASSOC)["password"];
 

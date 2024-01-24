@@ -2,7 +2,8 @@
 session_start();
 ?>
 
-<?php include "../partials/navbar.php"; ?>
+<?php include base_path("src/partials/navbar.php"); ?>
+
 
 <section id="intro" class="p-4">
     <div class="container-lg mt-3">
@@ -16,10 +17,10 @@ session_start();
                 <a href="#" class="btn btn-secondary">Contact us!</a>
             </div>
             <div class="col-md-5 text-center d-none d-md-block">
-                <img class="img-fluid rounded" width="100%" src="lesson.png" alt="">
+                <img class="img-fluid rounded" width="100%" src="/assets/lesson.png" alt="">
             </div>
         </div>
     </div>
 </section>
 
-<?php include "../partials/footer.php"; ?>
+<?php include base_path("src/partials/footer.php"); ?>

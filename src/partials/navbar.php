@@ -13,33 +13,33 @@
             <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="about.php">About</a>
+                    <a class="nav-link active" aria-current="page" href="about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pricing.php">Pricing</a>
+                    <a class="nav-link" href="pricing">Pricing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="reviews.php">Reviews</a>
+                    <a class="nav-link" href="reviews">Reviews</a>
                 </li>
 
 
                 <?php if (isset($_SESSION["user"])) { ?>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="Account.php">Account</a>
+                        <a class="nav-link" href="account">Account</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="account.php"> User:
+                        <a class="nav-link" href="account"> User:
                             <?= $_SESSION["user"] ?>
                         </a>
                     </li>
                     <li>
-                        <a class="btn btn-danger" aria-current="page" href="/logout.php">Log out</a>
+                        <a class="btn btn-danger" aria-current="page" href="logout">Log out</a>
                     </li>
 
                 <?php } else { ?>
-                    <a class="btn btn-primary" aria-current="page" href="/login.php">Sign in</a>
+                    <a class="btn btn-primary" aria-current="page" href="login">Sign in</a>
 
                 <?php } ?>
 

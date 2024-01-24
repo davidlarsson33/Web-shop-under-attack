@@ -1,4 +1,4 @@
-<?php include "SingletonDbHandler.php"; ?>
+<?php require_once base_path("src/db/SingletonDbHandler.php"); ?>
 
 <?php
 class ReviewDbHandler extends SingletonDbHandler
