@@ -1,6 +1,7 @@
 =================
 Stored XSS attack
 =================
+This attack opens up a major security threat for the website.
 
 How to perform:
 
@@ -10,7 +11,7 @@ Start the attacker's webpage:
     cd attacker
 
 2. Set up and start flask by running the following command:
-    chmod +x./flask.sh
+    chmod +x ./flask.sh
 
 3. Set up and start flask by running the following command:
     ./flask.sh
@@ -61,9 +62,47 @@ NOTE: The attacker will send his own session token to himself as a part of the s
 14. The attacker has now successfully hijacked a user's session and can perform any action that the authentic user can perform. The attacker can change the user's password, name or email adress. The attacker can even delete the user's account now.  
 
 
-====================
+================
+Session fixation
+================
+
+
+Alternative approach 1 using stored XSS:
+-----------------------------------------
+ATTACK STAGE:
+1. Open one chrome tab in regular mode
+2. Go to http://localhost/singup.php in the regular mode tab
+3. Make an account for the attacker
+4. Log in as the attacker
+5. Perform a stored XSS attack as outlined above but paste in this in the comment section:
+<script>document.cookie="THE_ATTACKER'S_SESSION_TOKEN"</script>
+
+Example:
+<script>document.cookie="PHPSESSID=af45a8819791c49a4d0320"</script>
+
+6. Log out the attacker
+
+
+Alternative approach 2 using reflected XSS:
+-----------------------------------------
+1. Login in as the attacker in one regular tab
+2. Open up another tab in chrome in incognito mode
+3. Notice that you are not loged in incognito mode
+
+4. Get a hold of the attacker's session token
+
+5. Trick the user to go to the login page and paste in the following in the username-field:
+<script>document.cookie="THE_ATTACKER'S_SESSION_TOKEN"</script>
+
+Example:
+<script>document.cookie="PHPSESSID=af45a8819791c49a4d0320ca45105472"</script>
+
+6. Make the user press submit
+
+
+====
 CSRF
-====================
+====
 
 1. Log in as a user at http://localhost/login.php
 2. Go the the attacker's URL in another tab: http://localhost:5000/CSRF
