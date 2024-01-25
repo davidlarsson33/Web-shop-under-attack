@@ -1,18 +1,22 @@
 <?php
 
-$pagesDir = "../src/controllers";
+$controllersDir = "../src/controllers";
 
-$routeHandler -> get('/', "$pagesDir/index.php");
-$routeHandler -> get('/about', "$pagesDir/about.php");
-$routeHandler -> get('/signup', "$pagesDir/signup.php");
-$routeHandler -> get('/login', "$pagesDir/login.php");
-$routeHandler -> get('/reviews', "$pagesDir/Reviews.php");
-$routeHandler -> get('/pricing', "$pagesDir/pricing.php");
-$routeHandler -> get('/account', "$pagesDir/account.php");
-$routeHandler -> get('/logout', "$pagesDir/logout.php");
+$routeHandler -> get('/', "$controllersDir/index.php");
+$routeHandler -> get('/about', "$controllersDir/about.php");
+$routeHandler -> get('/signup', "$controllersDir/signup.php");
+$routeHandler -> get('/login', "$controllersDir/login.php");
+$routeHandler -> get('/reviews', "$controllersDir/Reviews.php");
+$routeHandler -> get('/pricing', "$controllersDir/pricing.php");
+$routeHandler -> get('/account', "$controllersDir/account.php");
+$routeHandler -> get('/logout', "$controllersDir/logout.php");
+$routeHandler -> get('/notfound', "$controllersDir/404.php");
 
-$routeHandler -> get('/notfound', "$pagesDir/404.php");
+$routeHandler -> post('/reviews', "$controllersDir/review/create.php");
+$routeHandler -> post('/signup', "$controllersDir/account/create.php");
+$routeHandler -> post('/login', "$controllersDir/session/login.php");
+$routeHandler -> post('/logout', "$controllersDir/session/logout.php");
 
-// $router -> delete('/account', "$pagesDir.acco.php");
+$routeHandler -> delete('/account', "$controllersDir/account/destroy.php");
 
 ?>
