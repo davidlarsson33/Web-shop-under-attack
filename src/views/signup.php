@@ -1,38 +1,3 @@
-<?php
-session_start();
-require_once base_path("src/utilities/FormValidator.php");
-require_once base_path("src/db/SignUpDbHandler.php");
-
-$dbConfig = require_once base_path("src/db/configurations/dbconfig.php");
-$errors = null;
-$showModal = null;
-
-if (isset($_POST["submit"])) {
-
-    $validator = new FormValidator();
-    $errors = $validator->validateFormData($_POST);
-
-    if (empty($errors)) {
-        $db = new SignUpDbHandler($dbConfig , 'db-username', 'db-password');
-        $userExists = $db -> userExists($_POST["email"]);
-
-        if($userExists){
-            $showModal = true;
-            
-        } else{
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-            $name = $_POST["name"];
-
-            $db -> signUp($name, $email, $password);
-
-            header('Location: login');
-            exit;
-        }
-    } 
-}
-?>
-
 <?php include base_path("src/views/partials/navbar.php"); ?>
 
     <!-- Modal -->
@@ -64,7 +29,7 @@ if (isset($_POST["submit"])) {
     <div class="container p-5" style="max-width:600px">
         <h1 class="border-bottom pb-2">Sign up!</h1>
 
-        <form class="row g-3 needs-validation" novalidate method="POST">
+        <form class="row g-3 needs-validation" action="/signup" novalidate method="POST">
 
             <div class="col-12">
                 <label for="validationCustom02" class="form-label">Name</label>
