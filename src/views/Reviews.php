@@ -1,25 +1,3 @@
-<?php
-session_start();
-
-require_once base_path("src/db/ReviewDbHandler.php");
-require_once base_path("src/utilities/ReviewFormValidator.php");
-
-$dbConfig = require_once base_path("src/db/configurations/dbconfig.php");
-$db = new ReviewDbHandler($dbConfig, 'db-username', 'db-password');
-$errors = [];
-
-if (isset($_POST["submit"])) {
-  $review = $_POST["text-area"];
-  $review = $_POST["nbrOfStars"];
-  $errors = (new ReviewFormValidator())->validateFormData($_POST);
-
-  if (empty($errors)) {
-    $db->insertReview($_POST);
-  }
-
-}
-?>
-
 <?php include base_path("src/views/partials/navbar.php"); ?>
 
 <style>
@@ -73,7 +51,7 @@ if (isset($_POST["submit"])) {
   <?php } ?>
 
   <?php if (isset($_SESSION['user'])) { ?>
-    <form method="POST" id="as">
+    <form action="/reviews" method="POST">
       <p><label for="w3review">Write your review!</label></p>
 
       <div class="stars" onclick="setRating(1)"></div>
@@ -108,7 +86,7 @@ if (isset($_POST["submit"])) {
         }
       </script>
 
-      <?php foreach ($errors as $error) { ?>
+      <?php if(!is_null($errors)) foreach ($errors as $error) { ?>
         <div class="text-danger">
           <?= $error ?>
         </div>
