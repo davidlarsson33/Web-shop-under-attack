@@ -34,9 +34,13 @@
                             <?= $_SESSION["user"] ?>
                         </a>
                     </li>
-                    <li>
-                        <a class="btn btn-danger" aria-current="page" href="logout">Log out</a>
-                    </li>
+
+                    <form action="/logout" method="POST">
+                        <li>
+                            <input type="submit" class="btn btn-danger" value="log out">
+                        </li>
+                    </form>
+
 
                 <?php } else { ?>
                     <a class="btn btn-primary" aria-current="page" href="login">Sign in</a>

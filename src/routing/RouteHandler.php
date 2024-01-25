@@ -1,5 +1,4 @@
 <?php
-
 class RouteHandler
 {
     public $routes = [];
@@ -43,13 +42,13 @@ class RouteHandler
                 return require $route['controller'];
             }
         }
-        
+
         $this->abort();
     }
 
     private function abort()
     {
-        return require base_path("src/pages/404.php");
+        return require base_path("src/views/404.php");
     }
 }
 
