@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <?php include base_path("src/views/partials/navbar.php"); ?>
 
 <style>
@@ -38,8 +36,9 @@
         </div>
     </form>
 
-    <form action="delete.php" metho="POST">
-        <button class="btn btn-danger mt-3">Delete account</button>
+    <form action="/account" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" class="btn btn-danger mt-3" value="Delete account">
     </form>
 
 </div>

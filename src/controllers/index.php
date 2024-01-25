@@ -1,3 +1,5 @@
-<?php session_start(); ?>
+<?php 
 
-<?php require base_path("src/views/index.php") ?>
+require base_path("src/views/index.php") 
+
+?>

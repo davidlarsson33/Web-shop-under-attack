@@ -1,9 +1,4 @@
-<?php
-session_start();
-?>
-
 <?php include base_path("src/views/partials/navbar.php"); ?>
-
 
 <section id="intro" class="p-4">
     <div class="container-lg mt-3">
