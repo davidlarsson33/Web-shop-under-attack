@@ -2,3 +2,4 @@ venv
 phised_data.txt
 attacker/__pycache__/attacker.cpython-310.pyc
 attacker/phished_data.txt
+TODO.md
