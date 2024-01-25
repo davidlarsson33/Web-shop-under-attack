@@ -43,7 +43,7 @@ class RouteHandler
                 return require $route['controller'];
             }
         }
-
+        
         $this->abort();
     }
 

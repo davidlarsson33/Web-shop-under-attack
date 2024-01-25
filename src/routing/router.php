@@ -1,4 +1,4 @@
-<?php require base_path("src/core/RouteHandler.php")?>
+<?php require base_path("src/routing/RouteHandler.php")?>
 <?php
 
 $uri = parse_url($_SERVER["REQUEST_URI"]);

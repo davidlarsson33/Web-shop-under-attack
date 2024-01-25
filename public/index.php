@@ -4,6 +4,6 @@ $BASE_PATH = __DIR__ . '/../';
 
 require $BASE_PATH . "src/utilities/functions.php";
 
-require base_path("src/core/router.php");
+require base_path("src/routing/router.php");
 
 ?>
