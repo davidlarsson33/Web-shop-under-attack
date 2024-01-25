@@ -1,4 +1,4 @@
-<?php include base_path("src/views/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.view.php"); ?>
 
 <section id="pricing" class="bg-light mt-5 pt-3 pb-3">
     <div class="container-lg">
@@ -60,4 +60,4 @@
     </div>
 </section>
 
-<?php include base_path("src/views/partials/footer.php"); ?>
+<?php include base_path("src/views/partials/footer.view.php"); ?>

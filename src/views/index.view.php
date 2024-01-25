@@ -1,4 +1,4 @@
-<?php include base_path("src/views/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.view.php"); ?>
 
 <section id="intro" class="p-4">
     <div class="container-lg mt-3">
@@ -18,4 +18,4 @@
     </div>
 </section>
 
-<?php include base_path("src/views/partials/footer.php"); ?>
+<?php include base_path("src/views/partials/footer.view.php"); ?>

@@ -1,4 +1,4 @@
-<?php require "head.php" ?>
+<?php require "head.view.php" ?>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">

@@ -1,5 +1,5 @@
 
-<?php include base_path("src/views/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.view.php"); ?>
 
 <div class="container p-5 ">
     <h2>About</h2>
@@ -35,4 +35,4 @@
     </p>
 </div>
 
-<?php include base_path("src/views/partials/footer.php"); ?>
+<?php include base_path("src/views/partials/footer.view.php"); ?>

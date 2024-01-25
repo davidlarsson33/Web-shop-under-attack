@@ -1,4 +1,4 @@
-<?php include base_path("src/views/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.view.php"); ?>
 
 <div class="container p-5 text-center">
     <h1 class="text-danger">404</h1>
@@ -6,4 +6,4 @@
     <a href="/">Go back to home</a>
 </div>
 
-<?php include base_path("src/views/partials/footer.php"); ?>
+<?php include base_path("src/views/partials/footer.view.php"); ?>

@@ -1,4 +1,4 @@
-<?php include base_path("src/views/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.view.php"); ?>
 
 <style>
     .form-item {
@@ -44,4 +44,4 @@
 </div>
 
 
-<?php include base_path("src/views/partials/footer.php"); ?>
+<?php include base_path("src/views/partials/footer.view.php"); ?>

@@ -1,4 +1,4 @@
-<?php include base_path("src/views/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.view.php"); ?>
 
 <div class="container" style="max-width:600px">
     <h2 class="border-bottom pb-2">Log in</h2>
@@ -24,6 +24,6 @@
     </form>
 </div>
 
-<?php include base_path("src/views/partials/footer.php"); ?>
+<?php include base_path("src/views/partials/footer.view.php"); ?>
 
 <!-- 123AC!asdasdasd -->

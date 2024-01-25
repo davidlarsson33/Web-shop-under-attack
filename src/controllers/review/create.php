@@ -13,6 +13,6 @@ if (empty($errors)) {
     $db->insertReview($_POST);
 }
 
-require base_path("src/views/reviews.php");
+require base_path("src/views/reviews.view.php");
 
 ?>

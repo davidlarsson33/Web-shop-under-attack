@@ -1,5 +1,5 @@
 <?php 
 
-require base_path("src/views/login.php");
+require base_path("src/views/login.view.php");
 
 ?>

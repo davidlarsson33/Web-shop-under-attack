@@ -6,7 +6,7 @@ $routeHandler -> get('/', "$controllersDir/index.php");
 $routeHandler -> get('/about', "$controllersDir/about.php");
 $routeHandler -> get('/signup', "$controllersDir/signup.php");
 $routeHandler -> get('/login', "$controllersDir/login.php");
-$routeHandler -> get('/reviews', "$controllersDir/Reviews.php");
+$routeHandler -> get('/reviews', "$controllersDir/reviews.php");
 $routeHandler -> get('/pricing', "$controllersDir/pricing.php");
 $routeHandler -> get('/account', "$controllersDir/account.php");
 $routeHandler -> get('/logout', "$controllersDir/logout.php");
