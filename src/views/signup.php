@@ -33,7 +33,7 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
-<?php include base_path("src/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.php"); ?>
 
     <!-- Modal -->
     <div class="modal fade border-info" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -177,4 +177,4 @@ if (isset($_POST["submit"])) {
         </form>
     </div>
 
-    <?php include base_path("src/partials/footer.php"); ?>
+    <?php include base_path("src/views/partials/footer.php"); ?>

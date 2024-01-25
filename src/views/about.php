@@ -1,6 +1,5 @@
-<?php session_start(); ?>
 
-<?php include base_path("src/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.php"); ?>
 
 <div class="container p-5 ">
     <h2>About</h2>
@@ -34,6 +33,6 @@
         a lifelong passion for playing the guitar. Join my on this musical adventure, and let the strings of
         creativity resonate in your life.
     </p>
-
 </div>
-<?php include base_path("src/partials/footer.php"); ?>
+
+<?php include base_path("src/views/partials/footer.php"); ?>

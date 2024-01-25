@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 
-<?php include base_path("src/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.php"); ?>
 
 <style>
     .form-item {
@@ -45,4 +45,4 @@
 </div>
 
 
-<?php include base_path("src/partials/footer.php"); ?>
+<?php include base_path("src/views/partials/footer.php"); ?>

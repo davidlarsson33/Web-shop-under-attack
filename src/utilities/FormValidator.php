@@ -33,7 +33,7 @@ class FormValidator
         if (empty($passwordRepeat)) {
             $this->appendToError("passwordRepeat", "You must repeat the password");
         } else if ($password != $passwordRepeat) {
-            $this->appendToError("passwordRepeat", "Passwords does not match");
+            $this->appendToError("passwordRepeat", "Passwords do not match");
         }
     }
 

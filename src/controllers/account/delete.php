@@ -5,7 +5,7 @@
 
     $db = new DeleteDbHandler();
     $db -> delete($_SESSION["email"]);
-
+    
     session_unset();
     session_destroy();
     header("Location: /")

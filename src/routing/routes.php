@@ -1,6 +1,6 @@
 <?php
 
-$pagesDir = "../src/pages";
+$pagesDir = "../src/controllers";
 
 $routeHandler -> get('/', "$pagesDir/index.php");
 $routeHandler -> get('/about', "$pagesDir/about.php");

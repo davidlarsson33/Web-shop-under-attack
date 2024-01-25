@@ -20,7 +20,7 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
-<?php include base_path("src/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.php"); ?>
 
 <style>
   .stars {
@@ -124,4 +124,4 @@ if (isset($_POST["submit"])) {
   
 </div>
 
-<?php include base_path("src/partials/footer.php"); ?>
+<?php include base_path("src/views/partials/footer.php"); ?>

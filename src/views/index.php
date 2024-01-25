@@ -2,7 +2,7 @@
 session_start();
 ?>
 
-<?php include base_path("src/partials/navbar.php"); ?>
+<?php include base_path("src/views/partials/navbar.php"); ?>
 
 
 <section id="intro" class="p-4">
@@ -23,4 +23,4 @@ session_start();
     </div>
 </section>
 
-<?php include base_path("src/partials/footer.php"); ?>
+<?php include base_path("src/views/partials/footer.php"); ?>
