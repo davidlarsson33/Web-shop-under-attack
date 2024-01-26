@@ -6,4 +6,9 @@ function base_path($path)
     return $BASE_PATH . $path;
 }
 
+function dump($value){
+    echo '<pre>' , var_dump($value) , '</pre>';
+    die();
+}
+
 ?>
