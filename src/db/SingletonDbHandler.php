@@ -1,4 +1,3 @@
-<?php require_once base_path("src/db/DatabaseHandler.php"); ?>
 <?php
 abstract class SingletonDbHandler
 {

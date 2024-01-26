@@ -1,5 +1,4 @@
 <?php
-require_once base_path("src/db/SingletonDbHandler.php");
 class ReviewDbHandler extends SingletonDbHandler
 {
    

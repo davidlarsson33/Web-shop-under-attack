@@ -1,8 +1,5 @@
 <?php 
 
-require_once base_path("src/utilities/FormValidator.php");
-require_once base_path("src/db/SignUpDbHandler.php");
-
 $dbConfig = require_once base_path("src/db/configurations/dbconfig.php");
 
 $showModal = false;

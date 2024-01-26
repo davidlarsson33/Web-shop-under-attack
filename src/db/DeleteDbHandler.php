@@ -1,4 +1,3 @@
-<?php require_once base_path("src/db/SingletonDbHandler.php"); ?>
 <?php
 class DeleteDbHandler extends SingletonDbHandler
 {

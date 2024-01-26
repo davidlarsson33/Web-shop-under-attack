@@ -1,7 +1,5 @@
 <?php
 
-include_once base_path("src/db/LoginDbHandler.php");
-include_once base_path("src/db/DatabaseHandler.php");
 $dbConfig = require_once base_path("src/db/configurations/dbconfig.php");
 
 if (isset($_POST["submit"])) {
