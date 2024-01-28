@@ -15,7 +15,7 @@
     </div>
     </div>
 
-    <?php if ($showModal) : ?>
+    <?php if ($showModal ?? false) : ?>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
@@ -40,11 +40,11 @@
                     name="name" 
                     id="validationCustom02"
                     value="<?= $_POST['name'] ?? ''; ?>"
-                    class="form-control <?= $errors['name'] ? 'is-invalid' : ''; ?>"
+                    class="form-control <?= isset($errors['name']) ? 'is-invalid' : '';?>"
                 >
 
                 <div class="invalid-feedback">
-                    <?= $errors['name'] ?>
+                    <?= $errors['name'] ?? ''?>
                 </div>
 
             </div>
@@ -59,12 +59,12 @@
                         name="email"
                         id="validationCustomUsername"
                         aria-describedby="inputGroupPrepend"
-                        class="form-control <?= $errors['email'] ? 'is-invalid' : ''; ?>"
+                        class="form-control <?= isset($errors['email']) ? 'is-invalid' : ''; ?>"
                         value="<?= $_POST['email'] ?? ''; ?>" 
                     >
 
                     <div class="invalid-feedback">
-                        <?= $errors['email'] ?>
+                        <?= $errors['email'] ?? ''?>
                     </div>
 
                 </div>
@@ -79,13 +79,13 @@
                         required
                         name="password"
                         id="validationCustomUsername"
-                        class="form-control <?= $errors['password'] ? 'is-invalid' : ''; ?>" 
+                        class="form-control <?= isset($errors['password']) ? 'is-invalid' : ''; ?>" 
                         value="<?= $_POST['password'] ?? ''; ?>" 
                         aria-describedby="inputGroupPrepend" 
                     >
 
                     <div class="invalid-feedback">
-                        <?= $errors['password'] ?>
+                        <?= $errors['password'] ?? '' ?>
                     </div>
 
                 </div>
@@ -99,14 +99,14 @@
                         type="text" 
                         required
                         name="passwordRepeat"
-                        class="form-control <?= $errors['passwordRepeat'] ? 'is-invalid' : ''; ?>"
+                        class="form-control <?= isset($errors['passwordRepeat']) ? 'is-invalid' : ''; ?>"
                         id="validationCustomUsername" 
                         aria-describedby="inputGroupPrepend" 
                         value="<?= $_POST['passwordRepeat'] ?? ''; ?>" 
                     >
 
                     <div class="invalid-feedback">
-                        <?= $errors['passwordRepeat'] ?>
+                        <?= $errors['passwordRepeat'] ?? '' ?>
                     </div>
 
                 </div>
@@ -117,19 +117,19 @@
 
                     <input 
                         required
-                        class="form-check-input <?= $errors['terms&conditions'] ? 'is-invalid' : ''; ?>"
+                        class="form-check-input <?php $errors['terms&conditions'] ?? 'is-invalid' ?>"
                         type="checkbox" 
                         name="terms&conditions" 
                         id="invalidCheck" 
-                        <?php if (isset($_POST['terms&conditions'])) echo "checked" ?>
+                        <?= isset($_POST['terms&conditions']) ? 'checked': ''?>
                     >
-
-                    <label class="form-check-label" for="invalidCheck">
+                    <label class="f
+                    orm-check-label" for="invalidCheck">
                         Agree to terms and conditions
                     </label>
 
                     <div class="invalid-feedback">
-                        <?= $errors['terms&conditions'] ?>
+                        <?= $errors['terms&conditions'] ?? '' ?>
                     </div>
 
                 </div>
