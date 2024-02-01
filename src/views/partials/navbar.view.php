@@ -23,7 +23,7 @@
                 </li>
 
 
-                <?php if (isset($_SESSION["user"])) { ?>
+                <?php if (Session::has("user")) { ?>
 
                     <li class="nav-item">
                         <a class="nav-link" href="account">Account</a>
@@ -31,7 +31,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="account"> User:
-                            <?= $_SESSION["user"] ?>
+                            <?= Session::get("user", "")?>
                         </a>
                     </li>
 

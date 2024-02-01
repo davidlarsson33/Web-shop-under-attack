@@ -4,13 +4,9 @@ class Authenticated extends Middleware
 {
     public function handle()
     {
-        if (!$_SESSION['user'] ?? false) {
-
-            header("Location: /");
-            
-            exit();
+        if (!Session::has("user")) {
+           redirect("/");
         }
-
     }
 }
 ?>

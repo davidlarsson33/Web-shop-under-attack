@@ -8,7 +8,6 @@ class AutoLoader
           if (str_contains($className, "Db") || str_contains($className, "Database")) {
                require_once base_path("src/db/$className.php");
           }
-
      }
 
      public static function utilityLoader($className)
@@ -16,11 +15,11 @@ class AutoLoader
           if (str_contains($className, "Validator")) {
                require_once base_path("src/utilities/$className.php");
           }
-
+          if (str_contains($className, "Session")) {
+               require_once base_path("src/utilities/$className.php");
+          }
      }
-
 }
 
 spl_autoload_register('AutoLoader::databaseLoader');
 spl_autoload_register('AutoLoader::utilityLoader');
-?>

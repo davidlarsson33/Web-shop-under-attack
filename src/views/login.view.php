@@ -4,7 +4,7 @@
 
 <div class="container" style="max-width:600px">
     <h2 class="border-bottom pb-2">Log in</h2>
-    <form action="/login" method="POST">
+    <form action="/session" method="POST">
         <div class="form-group mb-3">
             <label for="exampleInputEmail1">Email address</label>
             <input name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"

@@ -50,7 +50,7 @@
 
   <?php } ?>
 
-  <?php if (isset($_SESSION['user'])) { ?>
+  <?php if (Session::has("user")) { ?>
     <form action="/reviews" method="POST">
       <p><label for="w3review">Write your review!</label></p>
 
@@ -66,7 +66,7 @@
       <br>
 
       <input id="nbrOfStars" name="nbrOfStars" type="hidden" value="0">
-      <input name="name" type="hidden" value="<?= $_SESSION['user'] ?>">
+      <input name="name" type="hidden" value="<?= Session::get("user", "") ?>">
 
       <script>
         let selectedStars = 0;
@@ -86,7 +86,7 @@
         }
       </script>
 
-      <?php if(!is_null($errors)) foreach ($errors as $error) { ?>
+      <?php if($errors ?? false) foreach ($errors as $error) { ?>
         <div class="text-danger">
           <?= $error ?>
         </div>

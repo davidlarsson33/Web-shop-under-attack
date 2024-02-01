@@ -21,7 +21,7 @@ if (empty($errors)) {
         $name = $_POST["name"];
 
         $db->signUp($name, $email, $password);
-        header("Location: /login");
+        redirect("/login");
     }
 }
 

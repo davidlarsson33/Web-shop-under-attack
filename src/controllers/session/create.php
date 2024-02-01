@@ -14,11 +14,12 @@ if (empty($errors)) {
     $result = $db->queryInsecure("SELECT name FROM users WHERE email = '$email'");
     $name = $result->fetch(PDO::FETCH_ASSOC)["name"];
     
-    $_SESSION["user"] = $name;
-    $_SESSION["email"] = $email;
+    Session::put("user", $name);
+    Session::put("email", $email);
+
     session_regenerate_id(true);
 
-    header('Location: /');
+    redirect("/");
 
 } else {
 

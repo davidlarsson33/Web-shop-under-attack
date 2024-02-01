@@ -11,15 +11,13 @@ if (empty($errors)) {
 
     $db = new EditDbHandler($dbConfig, 'db-username', 'db-password');
 
-    $oldEmail = $_SESSION['email'];
+    $oldEmail = Session::get('email');
     $email = $_POST["email"];
     $password = $_POST["password"];
     $name = $_POST["name"];
 
     $db->update($oldEmail, $name, $email, $password);
-    header("Location: /");
-    exit();
-
+    redirect("/");
 }
 
 require base_path("src/views/account.view.php");

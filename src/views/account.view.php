@@ -13,12 +13,12 @@
 
         <div class="form-item">
             <label for="">Username</label>
-            <input type="text" name="name" class="form-control text-muted" value="<?= $_SESSION["user"] ?>">
+            <input type="text" name="name" class="form-control text-muted" value="<?= Session::get("user", "") ?>">
         </div>
 
         <div class="form-item">
             <label for="">Email</label>
-            <input type="text" name="email" class="form-control" value="<?= $_SESSION["email"] ?>">
+            <input type="text" name="email" class="form-control" value="<?= Session::get("email", "") ?>">
         </div>
 
         <div class="form-item">
