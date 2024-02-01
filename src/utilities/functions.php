@@ -11,4 +11,9 @@ function dump($value){
     die();
 }
 
+function redirect($path){
+    header("Location: $path");
+    exit();
+}
+
 ?>
