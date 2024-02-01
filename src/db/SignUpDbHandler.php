@@ -17,9 +17,9 @@ class SignUpDbHandler extends SingletonDbHandler
 
     public function userExists($email)
     {
-        $stmt = "SELECT EXISTS(SELECT 1 FROM users WHERE email = $email)";
+        $stmt = "SELECT EXISTS(SELECT 1 FROM users WHERE email = '$email')";
         $result = $this -> db -> queryInsecure($stmt);
-        return $result;
+        return $result->fetchColumn();
     }
 }
 ?>

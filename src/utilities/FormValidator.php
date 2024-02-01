@@ -9,7 +9,7 @@ class FormValidator
         $password = $formData["password"];
         $passwordRepeat = $formData["passwordRepeat"];
         $name = $formData["name"];
-        $terms = $formData["terms&conditions"];
+        $terms = $formData["terms&conditions"] ?? null;
 
         $this->validateName($name);
         $this->validateTerms($terms);
@@ -102,7 +102,7 @@ class FormValidator
 
     private function appendToError($key, $value)
     {
-        if ($this->errors[$key] != null) {
+        if (!is_null($this->errors[$key])) {
             $this->errors[$key] = $this->errors[$key] . "<br />"  . $value;
         } else {
             $this->errors[$key] = $value;

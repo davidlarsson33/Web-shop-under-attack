@@ -58,7 +58,7 @@ class RouteHandler
 
     private function abort()
     {
-        return require base_path("src/views/404.php");
+        return require base_path("src/views/404.view.php");
     }
 
     public function restrictTo($key)
