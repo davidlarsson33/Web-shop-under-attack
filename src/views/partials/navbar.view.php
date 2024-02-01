@@ -35,9 +35,10 @@
                         </a>
                     </li>
 
-                    <form action="/logout" method="POST">
+                    <form action="/session" method="POST"> 
+                        <input type="hidden" name="_method" value="DELETE">
                         <li>
-                            <input type="submit" class="btn btn-danger" value="log out">
+                            <input type="submit" class="btn btn-danger" value="logout">
                         </li>
                     </form>
 
