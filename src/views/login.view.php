@@ -1,5 +1,7 @@
 <?php include base_path("src/views/partials/navbar.view.php"); ?>
 
+<?php include base_path("src/views/components/modal.view.php"); ?>
+
 <div class="container" style="max-width:600px">
     <h2 class="border-bottom pb-2">Log in</h2>
     <form action="/login" method="POST">

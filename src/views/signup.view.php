@@ -1,30 +1,6 @@
 <?php include base_path("src/views/partials/navbar.view.php"); ?>
 
-    <!-- Modal -->
-    <div class="modal fade border-info" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog ">
-        <div class="modal-content">
-        <div class="modal-header pt-2 border-info">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Could not sign up</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-5 ">
-            Reason: Username is already taken
-        </div>
-        </div>
-    </div>
-    </div>
-
-    <?php if ($showModal ?? false) : ?>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
-                myModal.show();
-            });
-        </script>
-    <?php endif; ?>
-
-     <!-- Modal -->
+    <?php include base_path("src/views/components/modal.view.php"); ?>
 
     <div class="container p-5" style="max-width:600px">
         <h1 class="border-bottom pb-2">Sign up!</h1>
