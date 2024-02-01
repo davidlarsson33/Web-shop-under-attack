@@ -102,7 +102,7 @@ class FormValidator
 
     private function appendToError($key, $value)
     {
-        if (!is_null($this->errors[$key])) {
+        if ($this->errors[$key] ?? false) {
             $this->errors[$key] = $this->errors[$key] . "<br />"  . $value;
         } else {
             $this->errors[$key] = $value;
