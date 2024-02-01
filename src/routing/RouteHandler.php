@@ -31,9 +31,12 @@ class RouteHandler
 
     private function addRoute($uri, $controller, $method)
     {
+
+        $controllersDir =  base_path("src/controllers/");
+
         $this->routes[] = [
             'uri' => $uri,
-            'controller' => $controller,
+            'controller' => $controllersDir . $controller,
             'method' => $method,
             'middleware' => null
         ];

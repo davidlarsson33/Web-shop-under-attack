@@ -1,24 +1,22 @@
 <?php
 
-$controllersDir =  base_path("src/controllers");
-// REMOVE $ctrlDirPath. Move it to ROUTEHANDLER
-$routeHandler -> get('/', "$controllersDir/index.php");
-$routeHandler -> get('/about', "$controllersDir/about.php");
-$routeHandler -> get('/signup', "$controllersDir/signup.php");
-$routeHandler -> get('/login', "$controllersDir/login.php")->restrictTo("guest");
-$routeHandler -> get('/reviews', "$controllersDir/reviews.php");
-$routeHandler -> get('/pricing', "$controllersDir/pricing.php");
-$routeHandler -> get('/account', "$controllersDir/account.php")->restrictTo("authenticated");;
-$routeHandler -> get('/logout', "$controllersDir/logout.php")->restrictTo("authenticated");;
-$routeHandler -> get('/notfound', "$controllersDir/404.php");
+$routeHandler -> get('/', "index.php");
+$routeHandler -> get('/about', "about.php");
+$routeHandler -> get('/signup', "signup.php");
+$routeHandler -> get('/login', "login.php")->restrictTo("guest");
+$routeHandler -> get('/reviews', "reviews.php");
+$routeHandler -> get('/pricing', "pricing.php");
+$routeHandler -> get('/account', "account.php")->restrictTo("authenticated");;
+$routeHandler -> get('/logout', "logout.php")->restrictTo("authenticated");;
+$routeHandler -> get('/notfound', "404.php");
 
-$routeHandler -> post('/reviews', "$controllersDir/review/create.php")->restrictTo("authenticated");;
-$routeHandler -> post('/signup', "$controllersDir/account/create.php")->restrictTo("guest");;
-$routeHandler -> post('/session', "$controllersDir/session/create.php")->restrictTo("guest");;
+$routeHandler -> post('/reviews', "review/create.php")->restrictTo("authenticated");;
+$routeHandler -> post('/signup', "account/create.php")->restrictTo("guest");;
+$routeHandler -> post('/session', "session/create.php")->restrictTo("guest");;
 
-$routeHandler -> delete('/session', "$controllersDir/session/destroy.php")->restrictTo("authenticated");
-$routeHandler -> delete('/account', "$controllersDir/account/destroy.php")->restrictTo("authenticated");
+$routeHandler -> delete('/session', "session/destroy.php")->restrictTo("authenticated");
+$routeHandler -> delete('/account', "account/destroy.php")->restrictTo("authenticated");
 
-$routeHandler -> patch('/account', "$controllersDir/account/edit.php")->restrictTo("authenticated");
+$routeHandler -> patch('/account', "account/edit.php")->restrictTo("authenticated");
 
 ?>
