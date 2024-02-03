@@ -1,5 +1,6 @@
 version: "3.8"
 services:
+
   app:
     build:
       context: .
@@ -8,6 +9,7 @@ services:
       - "80:80"
     volumes:
       - ./:/var/www/html/   
+
   db:
     image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
@@ -20,6 +22,7 @@ services:
       - MYSQL_PASSWORD=db-password
     volumes:
       - ./src/db/sql/:/docker-entrypoint-initdb.d
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
@@ -30,3 +33,12 @@ services:
       - PMA_PORT=3306
     depends_on:
       - db
+
+  attacker-app:
+    build:
+      context: ./attacker
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./attacker/:/flask-app/
