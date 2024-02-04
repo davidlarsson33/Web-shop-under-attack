@@ -17,6 +17,13 @@ class Session
     {
         return (bool) static::get($key);
     }
+
+
+    public static function start()
+    {
+        session_start();
+    }
+
     
     public static function destroy()
     {
