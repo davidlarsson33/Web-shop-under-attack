@@ -2,7 +2,8 @@
 
 class FormValidator
 {
-    private $errors = [];
+
+    protected $errors = [];
     public function validateFormData($formData)
     {
         $email = $formData["email"];
@@ -20,31 +21,28 @@ class FormValidator
         return $this->errors;
     }
 
-    private function validateName($email)
-    {    
+    protected function validateName($email)
+    {
         if (empty($email)) {
             $this->appendToError("name", "You must use a name");
         }
     }
 
-    private function validatePasswordMatch($password, $passwordRepeat)
+    protected function validatePasswordMatch($password, $passwordRepeat)
     {
-
-        if (empty($passwordRepeat)) {
-            $this->appendToError("passwordRepeat", "You must repeat the password");
-        } else if ($password != $passwordRepeat) {
-            $this->appendToError("passwordRepeat", "Passwords do not match");
+        if ($password != $passwordRepeat) {
+            $this->appendToError("passwordRepeat", "Repeated password not not match given password");
         }
     }
 
-    private function validateTerms($terms)
+    protected function validateTerms($terms)
     {
         if (!isset($terms)) {
             $this->appendToError("terms&conditions", "You must agree to terms & conditions");
         }
     }
 
-    private function validateEmail($email)
+    protected function validateEmail($email)
     {
         if (empty($email)) {
             $this->appendToError("email", "You must provide an email");
@@ -53,7 +51,7 @@ class FormValidator
         }
     }
 
-    private function validatePassword($password)
+    protected function validatePassword($password)
     {
         if (empty($password)) {
             $this->appendToError("password", "Password cannot be left empty");
@@ -66,44 +64,44 @@ class FormValidator
         }
     }
 
-    private function containsUppercase($string)
+    protected function containsUppercase($string)
     {
         if (!preg_match('@[A-Z]@', $string)) {
-            $this->appendToError("password", "Lacks an uppercase letter");
+            $this->appendToError("password", "Password lacks an uppercase letter");
         }
     }
 
-    private function containsLowercase($string)
+    protected function containsLowercase($string)
     {
         if (!preg_match('@[a-z]@', $string)) {
-            $this->appendToError("password", "Lacks an lowercase letter");
+            $this->appendToError("password", "Password lacks an lowercase letter");
         }
     }
-    private function containsNumber($string)
+    protected function containsNumber($string)
     {
         if (!preg_match('@[0-9]@', $string)) {
-            $this->appendToError("password", "Lacks a number");
+            $this->appendToError("password", "Password lacks a number");
         }
     }
 
-    private function containsSpecialChars($string)
+    protected function containsSpecialChars($string)
     {
         if (!preg_match('@[^\w]@', $string)) {
-            $this->appendToError("password", "Lacks special characters");
+            $this->appendToError("password", "Password lacks special characters");
         }
     }
 
-    private function validPasswordLength($passwordStr, $required_length = 12)
+    protected function validPasswordLength($passwordStr, $required_length = 12)
     {
         if (!(strlen($passwordStr) >= $required_length)) {
-            $this->appendToError("password", "Lacks a lenght of minimum 12 characters");
+            $this->appendToError("password", "Password lacks a lenght of minimum 12 characters");
         }
     }
 
-    private function appendToError($key, $value)
+    protected function appendToError($key, $value)
     {
         if ($this->errors[$key] ?? false) {
-            $this->errors[$key] = $this->errors[$key] . "<br />"  . $value;
+            $this->errors[$key] = $this->errors[$key] . "<br />" . $value;
         } else {
             $this->errors[$key] = $value;
         }
