@@ -8,14 +8,10 @@ class EditDbHandler extends SingletonDbHandler
 
     function update($oldEmail, $newName, $newEmail, $newPassword)
     {
-        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-
         $stmt = "
         UPDATE `users` 
-        SET `name`='$newName',`email`='$newEmail',`password`='$hashedPassword'
-        WHERE email = '$oldEmail'";
-        
+        SET `name`='$newName', `email`='$newEmail' " . (empty($newPassword) ? ", `password`='" . password_hash($newPassword, PASSWORD_DEFAULT) . "'" : "") .
+        "WHERE email = '$oldEmail'";
         $this->db->queryInsecure($stmt);
     }
 }
-?>
