@@ -8,6 +8,8 @@
 
 <div class="container d-flex flex-column mt-5" style="max-width:600px">
     <h1>Account</h1>
+    
+    <?php include base_path("src/views/components/modal.view.php"); ?>
 
     <form action="/account" method="POST">
 
