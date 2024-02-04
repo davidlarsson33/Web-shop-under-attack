@@ -3,19 +3,19 @@
 $dbConfig = require_once base_path("src/db/configurations/dbconfig.php");
 
 
-$email = $_POST["email"];
-$password = $_POST["password"];
+$newEmail = $_POST["email"];
+$newPassword = $_POST["password"];
 $db = new LoginDbHandler($dbConfig, 'db-username', 'db-password');
-$errors = $db->login($email, $password);
+$errors = $db->login($newEmail, $newPassword);
 
 if (empty($errors)) {
     $db = DatabaseHandler::getInstance($dbConfig, 'db-username', 'db-password');
 
-    $result = $db->queryInsecure("SELECT name FROM users WHERE email = '$email'");
-    $name = $result->fetch(PDO::FETCH_ASSOC)["name"];
+    $result = $db->queryInsecure("SELECT name FROM users WHERE email = '$newEmail'");
+    $newName = $result->fetch(PDO::FETCH_ASSOC)["name"];
     
-    Session::put("user", $name);
-    Session::put("email", $email);
+    Session::put("user", $newName);
+    Session::put("email", $newEmail);
 
     session_regenerate_id(true);
 

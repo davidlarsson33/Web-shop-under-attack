@@ -1,13 +1,14 @@
-<?php require base_path("src/routing/RouteHandler.php")?>
 <?php
+require base_path("src/routing/RouteHandler.php");
+include base_path("src/utilities/Session.php");
 
-$uri = parse_url($_SERVER["REQUEST_URI"]);
-$requestedPath = $uri["path"];
-$method = $_POST['_method'] ?? $_SERVER["REQUEST_METHOD"];
+Session::start();
+
+$requestedPath = parse_url($_SERVER["REQUEST_URI"])["path"];
+$HTTPmethod = $_POST['_method'] ?? $_SERVER["REQUEST_METHOD"];
 
 $routeHandler = new RouteHandler();
 $routes = require "routes.php";
 
-$routeHandler -> route($requestedPath, $method);
+$routeHandler -> route($requestedPath, $HTTPmethod);
 
-?>

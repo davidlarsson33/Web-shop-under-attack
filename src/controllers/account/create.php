@@ -16,11 +16,11 @@ if (empty($errors)) {
         $message = "Error: Username  exists";
 
     } else {
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-        $name = $_POST["name"];
+        $newEmail = $_POST["email"];
+        $newPassword = $_POST["password"];
+        $newName = $_POST["name"];
 
-        $db->signUp($name, $email, $password);
+        $db->signUp($newName, $newEmail, $newPassword);
         redirect("/login");
     }
 }
