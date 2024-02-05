@@ -16,10 +16,6 @@ def attacker():
 def home():
     return render_template('homepage.html')
  
-@app.route("/malware")
-def malware():
-    return render_template('malware.html')
- 
 @app.route("/click-jacker")
 def click_jacker():
     return render_template('clickJacking.html')
