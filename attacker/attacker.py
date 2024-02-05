@@ -12,6 +12,10 @@ def attacker():
 
     return " "
 
+@app.route("/")
+def home():
+    return render_template('homepage.html')
+ 
 @app.route("/malware")
 def malware():
     return render_template('malware.html')
