@@ -12,6 +12,10 @@ if (empty($errors)) {
     $message = "Could not update due to the fact that:" . "<p>" . implode("\n", $errors) . "</p>";
 }
 
+require base_path("src/views/account.view.php");
+
+
+
 function evalutatePostData($postData)
 {
     $validator = new EditFormValidator();
@@ -40,9 +44,6 @@ function updateSessionVariables($postData)
     Session::put("user", $postData["name"]);
     Session::put("email", $postData["email"]);
 }
-
-
-require base_path("src/views/account.view.php");
 
 
 

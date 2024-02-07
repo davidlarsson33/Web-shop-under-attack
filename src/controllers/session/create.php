@@ -1,22 +1,15 @@
 <?php
 
+$email = $_POST["email"];
+$password = $_POST["password"];
+
 $dbConfig = require_once base_path("src/db/configurations/dbconfig.php");
-
-
-$newEmail = $_POST["email"];
-$newPassword = $_POST["password"];
 $db = new LoginDbHandler($dbConfig, 'db-username', 'db-password');
-$errors = $db->login($newEmail, $newPassword);
+$errors = $db->login($email, $password);
 
 if (empty($errors)) {
-    $db = DatabaseHandler::getInstance($dbConfig, 'db-username', 'db-password');
 
-    $result = $db->queryInsecure("SELECT name FROM users WHERE email = '$newEmail'");
-    $newName = $result->fetch(PDO::FETCH_ASSOC)["name"];
-    
-    Session::put("user", $newName);
-    Session::put("email", $newEmail);
-
+    updateSessionVariables(getUserName($email), $email);
     session_regenerate_id(true);
 
     redirect("/");
@@ -26,9 +19,23 @@ if (empty($errors)) {
     $showModal = true;
     $header = "Could not sign in";
     $message = $errors;
-    
+
     require base_path("src/views/login.view.php");
 
 }
 
-?>
+function getUserName($email)
+{
+    global $dbConfig;
+    $db = DatabaseHandler::getInstance($dbConfig, 'db-username', 'db-password');
+    $result = $db->queryInsecure("SELECT name FROM users WHERE email = '$email'");
+    $name = $result->fetch(PDO::FETCH_ASSOC)["name"];
+    return $name;
+
+}
+
+function updateSessionVariables($newName, $newEmail)
+{
+    Session::put("user", $newName);
+    Session::put("email", $newEmail);
+}
