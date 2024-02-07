@@ -25,7 +25,7 @@ if (empty($errors)) {
 
     $showModal = true;
     $header = "Could not sign in";
-    $message = "Username or password is incorrect";
+    $message = $errors;
     
     require base_path("src/views/login.view.php");
 
