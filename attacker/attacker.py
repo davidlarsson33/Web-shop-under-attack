@@ -16,7 +16,7 @@ def attacker():
 def home():
     return render_template('homepage.html')
  
-@app.route("/click-jacker")
+@app.route("/clickjacker")
 def click_jacker():
     return render_template('clickJacking.html')
 
