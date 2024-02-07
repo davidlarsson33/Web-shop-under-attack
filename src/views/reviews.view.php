@@ -31,7 +31,7 @@
     $stars = $row["stars"];
     ?>
 
-    <div class='border border-black rounded mb-3 mt-3' style='background-color:#DFDFDF; width:50%; max-width:400px;'>
+    <div class='border border-black rounded mb-3 mt-3' style='width:50%; max-width:400px;'>
       <div class='p-2'>
         <h5>
           <?= $name ?>
