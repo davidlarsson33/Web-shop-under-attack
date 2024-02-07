@@ -19,8 +19,7 @@ class LoginDbHandler extends SingletonDbHandler
             return false;
 
         } else if (empty($result->rowCount())) {
-            $error = "Username '$email' or password is incorrect!"; // used for XSS
-            echo $email;
+            $error = "Username $email or password is incorrect!";
         } else {
             $storedHash = $result->fetch(PDO::FETCH_ASSOC)["password"];
 
