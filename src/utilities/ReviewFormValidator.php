@@ -4,8 +4,8 @@ class ReviewFormValidator
     private $errors = [];
     public function validateFormData($formData)
     {
-        $review = $formData["text-area"];
-        $nbrOfStars = $formData["nbrOfStars"];
+        $review = $formData["text-area"] ?? "";
+        $nbrOfStars = $formData["nbrOfStars"] ?? "";
 
         $this->validateNbrOfStars($nbrOfStars);
         $this->validateReview($review);
@@ -31,7 +31,7 @@ class ReviewFormValidator
 
     private function appendToError($key, $value)
     {
-        if ($this->errors[$key] != null) {
+        if ($this->errors[$key] ?? false) {
             $this->errors[$key] = $this->errors[$key] . "<br />" . $value;
         } else {
             $this->errors[$key] = $value;
