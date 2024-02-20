@@ -9,7 +9,7 @@ $errors = $db->login($email, $password);
 
 if (empty($errors)) {
 
-    updateSessionVariables(getUserName($email), $email);
+    updateSessionVariables(getUserName($db, $email), $email);
     session_regenerate_id(true);
 
     redirect("/");
@@ -24,13 +24,10 @@ if (empty($errors)) {
 
 }
 
-function getUserName($email)
+function getUserName($db, $email)
 {
-    global $dbConfig;
-    $db = DatabaseHandler::getInstance($dbConfig, 'db-username', 'db-password');
-    $result = $db->queryInsecure("SELECT name FROM users WHERE email = '$email'");
-    $name = $result->fetch(PDO::FETCH_ASSOC)["name"];
-    return $name;
+    
+    return $db->getUserName($email);
 
 }
 

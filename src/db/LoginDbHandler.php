@@ -7,10 +7,19 @@ class LoginDbHandler extends SingletonDbHandler
        parent::__construct($config, $username, $password);
     }
 
+    function getUserName($email)
+    {
+        $stmt = "SELECT name FROM users WHERE email = '$email'";
+        $result = $this -> db->queryInsecure($stmt);
+        
+        $name = $result->fetch(PDO::FETCH_ASSOC)["name"];
+
+        return $name;
+    }
+
+
     function login($email, $password)
     {
-
-        // Not secure. User input is not sanitized/escaped
         $stmt = "SELECT password FROM users WHERE email = '$email'";
         $result = $this->db->queryInsecure($stmt);
         $error = null;
