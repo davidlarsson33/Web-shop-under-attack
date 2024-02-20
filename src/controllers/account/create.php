@@ -20,7 +20,7 @@ if (empty($errors)) {
 } else {
     $showModal = true;
     $header = "Could not sign up";
-    $message = $errors;
+    $message = implode("<br>", $errors);
 }
 
 require base_path("src/views/signup.view.php");
