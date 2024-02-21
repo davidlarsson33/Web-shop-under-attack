@@ -7,16 +7,15 @@ $errors = evalutatePostData($_POST);
 changesApproved($db, $errors);
 
 if (empty($errors)) {
-    updateCredentials($_POST["name"], $_POST["email"], $_POST["password"]);
+    updateCredentials($db, $_POST["name"], $_POST["email"], $_POST["password"]);
     updateSessionVariables($_POST);
 } else {
     $showModal = true;
     $header = "Could not update credentials";
-    $message = "Could not update due to the fact that:" . "<p>" . implode("\n", $errors) . "</p>";
+    $message = "Could not update due to the fact that:" . "<p>" . implode("<br>", $errors) . "</p>";
 }
 
 require base_path("src/views/account.view.php");
-
 
 function changesApproved($db, &$errors)
 {
@@ -25,6 +24,7 @@ function changesApproved($db, &$errors)
     }
 }
 
+
 function evalutatePostData($postData)
 {
     $validator = new EditFormValidator();
@@ -32,11 +32,9 @@ function evalutatePostData($postData)
     return $errors;
 }
 
-function updateCredentials($newName, $newEmail, $newPassword)
-{
-    $dbConfig = require_once base_path("src/db/configurations/dbconfig.php");
 
-    $db = new EditDbHandler($dbConfig, 'db-username', 'db-password');
+function updateCredentials($db, $newName, $newEmail, $newPassword)
+{
 
     $oldEmail = Session::get('email');
 
@@ -50,8 +48,8 @@ function updateCredentials($newName, $newEmail, $newPassword)
 
 function updateSessionVariables($postData)
 {
-    Session::put("user", $postData["name"]);
-    Session::put("email", $postData["email"]);
+    Session::put("user", htmlspecialchars($postData["name"]));
+    Session::put("email", htmlspecialchars($postData["email"]));
 }
 
 

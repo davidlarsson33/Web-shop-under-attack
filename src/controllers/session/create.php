@@ -26,13 +26,11 @@ if (empty($errors)) {
 
 function getUserName($db, $email)
 {
-    
     return $db->getUserName($email);
-
 }
 
 function updateSessionVariables($newName, $newEmail)
 {
-    Session::put("user", $newName);
-    Session::put("email", $newEmail);
+    Session::put("user", htmlspecialchars($newName));
+    Session::put("email", htmlspecialchars($newEmail));
 }

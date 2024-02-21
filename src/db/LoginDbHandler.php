@@ -4,7 +4,7 @@ class LoginDbHandler extends SingletonDbHandler
 
     function __construct($config, $username, $password)
     {
-       parent::__construct($config, $username, $password);
+        parent::__construct($config, $username, $password);
     }
 
     function getUserName($email)
@@ -18,6 +18,7 @@ class LoginDbHandler extends SingletonDbHandler
     }
 
 
+
     function login($email, $password)
     {
         $stmt = "SELECT password FROM users WHERE email = '$email'";
@@ -28,7 +29,7 @@ class LoginDbHandler extends SingletonDbHandler
             return false;
 
         } else if (empty($result->rowCount())) {
-            $error = "Username $email or password is incorrect!";
+            $error = "Username: " . htmlspecialchars($email) . " or password is incorrect!";
         } else {
             $storedHash = $result->fetch(PDO::FETCH_ASSOC)["password"];
 

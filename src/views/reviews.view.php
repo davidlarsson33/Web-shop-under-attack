@@ -25,8 +25,8 @@
   $result = $db->fetchReviews();
 
   foreach ($result as $row) {
-    $name = $row["name"];
-    $review = $row["review"];
+    $name = htmlspecialchars($row["name"]);
+    $review = htmlspecialchars($row["review"]);
     $create_at = $row["created_at"];
     $stars = $row["stars"];
     ?>
