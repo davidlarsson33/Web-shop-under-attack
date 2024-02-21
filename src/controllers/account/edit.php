@@ -1,7 +1,10 @@
 <?php
 
+$dbConfig = require_once base_path("src/db/configurations/dbconfig.php");
+$db = new EditDbHandler($dbConfig, 'db-username', 'db-password');
 
 $errors = evalutatePostData($_POST);
+changesApproved($db, $errors);
 
 if (empty($errors)) {
     updateCredentials($_POST["name"], $_POST["email"], $_POST["password"]);
@@ -15,6 +18,12 @@ if (empty($errors)) {
 require base_path("src/views/account.view.php");
 
 
+function changesApproved($db, &$errors)
+{
+    if (!($_SESSION["email"] === $_POST["email"] || $db->validChangeOfEmail($_POST["email"]))) {
+        $errors["email"] = "Email is already in use";
+    }
+}
 
 function evalutatePostData($postData)
 {

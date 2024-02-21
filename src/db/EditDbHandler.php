@@ -6,6 +6,12 @@ class EditDbHandler extends SingletonDbHandler
         parent::__construct($config, $username, $password);
     }
 
+    function validChangeOfEmail($email){
+        $stmt = "SELECT password FROM users WHERE email = '$email'";
+        $result = $this->db->queryInsecure($stmt);
+        return empty($result->rowCount());
+    }
+
     function update($oldEmail, $newName, $newEmail, $newPassword)
     {
         $stmt = "
