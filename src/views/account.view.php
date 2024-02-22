@@ -42,6 +42,7 @@
 
     <form action="/account" method="POST">
         <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? '' ?>">
         <input type="submit" class="btn btn-danger mt-3" value="Delete account">
     </form>
 
