@@ -1,15 +1,14 @@
 <?php
 class ReviewDbHandler extends SingletonDbHandler
 {
-   
     function __construct($config, $username, $password)
     {
-       parent::__construct($config, $username, $password);
+        parent::__construct($config, $username, $password);
     }
     function fetchReviews()
     {
         $stmt = "SELECT * FROM reviews;";
-        $result = $this->db->queryInsecure($stmt);
+        $result = $this->db->query($stmt);
         return $result->fetchAll();
     }
 
@@ -18,9 +17,7 @@ class ReviewDbHandler extends SingletonDbHandler
         $review = $formData["text-area"];
         $nbrOfStars = $formData["nbrOfStars"];
         $userName = $formData["name"];
-        $stmt = "INSERT INTO `reviews`(`name`, `stars`, `review`) VALUES ('$userName','$nbrOfStars','$review')";
-        $this->db->queryInsecure($stmt);
+        $stmt = "INSERT INTO `reviews`(`name`, `stars`, `review`) VALUES (?,?,?)";
+        $this->db->query($stmt, $userName, $nbrOfStars, $review);
     }
-
 }
-?>

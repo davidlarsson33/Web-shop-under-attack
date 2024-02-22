@@ -3,23 +3,21 @@ class SignUpDbHandler extends SingletonDbHandler
 {
     function __construct($config, $username, $password)
     {
-       parent::__construct($config, $username, $password);
+        parent::__construct($config, $username, $password);
     }
 
-    //TODO: Close connection to db
     function signUp($name, $email, $password)
     {
+        $stmt = "INSERT INTO users (name, email, password) VALUES (?,?,?)";
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $this -> db -> queryInsecure(
-            "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashedPassword')"
-        );
+
+        $this->db->query($stmt, $name, $email, $hashedPassword);
     }
 
     public function userExists($email)
     {
-        $stmt = "SELECT EXISTS(SELECT 1 FROM users WHERE email = '$email')";
-        $result = $this -> db -> queryInsecure($stmt);
+        $stmt = "SELECT EXISTS(SELECT 1 FROM users WHERE email = ?)";
+        $result = $this->db->query($stmt, $email);
         return $result->fetchColumn();
     }
 }
-?>

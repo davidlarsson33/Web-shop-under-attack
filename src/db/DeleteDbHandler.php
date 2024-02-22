@@ -8,8 +8,7 @@ class DeleteDbHandler extends SingletonDbHandler
 
     function delete($email)
     {
-        $stmt = "DELETE FROM users WHERE email = '$email'";
-        $this->db->queryInsecure($stmt);
+        $stmt = "DELETE FROM users WHERE email = ?";
+        $this->db->query($stmt, $email);
     }
 }
-?>

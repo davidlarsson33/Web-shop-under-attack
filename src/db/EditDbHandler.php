@@ -7,8 +7,8 @@ class EditDbHandler extends SingletonDbHandler
     }
 
     function validChangeOfEmail($email){
-        $stmt = "SELECT password FROM users WHERE email = '$email'";
-        $result = $this->db->queryInsecure($stmt);
+        $stmt = "SELECT password FROM users WHERE email = ?";
+        $result = $this->db->query($stmt, $email);
         return empty($result->rowCount());
     }
 
@@ -16,8 +16,8 @@ class EditDbHandler extends SingletonDbHandler
     {
         $stmt = "
         UPDATE `users` 
-        SET `name`='$newName', `email`='$newEmail' " . (!empty($newPassword) ? ", `password`='" . password_hash($newPassword, PASSWORD_DEFAULT) . "'" : "") .
-        "WHERE email = '$oldEmail'";
-        $this->db->queryInsecure($stmt);
+        SET `name`= ?, `email`= ? " . (!empty($newPassword) ? ", `password`='" . password_hash($newPassword, PASSWORD_DEFAULT) . "'" : "") .
+        "WHERE email = ?";
+        $this->db->query($stmt, $newName, $newEmail, $oldEmail);
     }
 }

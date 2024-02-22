@@ -9,20 +9,19 @@ class LoginDbHandler extends SingletonDbHandler
 
     function getUserName($email)
     {
-        $stmt = "SELECT name FROM users WHERE email = '$email'";
-        $result = $this -> db->queryInsecure($stmt);
+        $stmt = "SELECT name FROM users WHERE email = ?";
+        $result = $this -> db->query($stmt, $email);
         
         $name = $result->fetch(PDO::FETCH_ASSOC)["name"];
 
         return $name;
     }
 
-
-
     function login($email, $password)
     {
-        $stmt = "SELECT password FROM users WHERE email = '$email'";
-        $result = $this->db->queryInsecure($stmt);
+
+        $stmt = "SELECT password FROM users WHERE email = ?";
+        $result = $this->db->query($stmt, $email);
         $error = null;
 
         if (is_bool($result)) {
@@ -36,10 +35,8 @@ class LoginDbHandler extends SingletonDbHandler
             if (!password_verify($password, $storedHash)) {
                 $error = "Username or password is incorrect!";
             }
-
         }
 
         return $error;
     }
 }
-?>

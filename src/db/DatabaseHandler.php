@@ -22,7 +22,6 @@ class DatabaseHandler
 
     private function connect($dsn, $username, $password)
     {
-
         try {
             $pdo = new PDO($dsn, $username, $password);
             return $pdo;
@@ -33,10 +32,9 @@ class DatabaseHandler
         }
     }
 
-    function queryInsecure($query)
-    {
-        $stmt = $this->db->query($query);
+    public function query($preparedStmt, ...$values){
+        $stmt = $this -> db -> prepare($preparedStmt);
+        $stmt->execute($values);
         return $stmt;
     }
 }
-?>
