@@ -83,10 +83,11 @@ docker-compose up
 ## Clickjacking
 
 1. Go to the attackers page: http://localhost:5000/clickjacker
-2. Click anywhere on the webpage
+2. Click on the "Get an free iphone!"-button
+3. Open devloper tools and go to the network tab. It shows that a request has been made to another website due to the fact that the user has clicked a button on the website in the hidden iframe - which is an unknown act performed by the user. 
 
 ### Comments
-Once the user clicks anywhere on this website her clicks will get hijacked. The victim thinks that she is on the actual website for the guitar lessons, but in fact she is not. In this case she get redirected to another site when her click is hijacked. A more malicious approach would be to make the vicitm download malware.
+Once the user clicks on the button on this website her clicks will get hijacked. The victim thinks that she is going to win an iphone but in reality she performs some actions on another website (http://localhost/) embedded in an hidden iframe. In this case the user just navigates on the hidden website - which is harmless but it demonstrates the potential of the attack.
 
 <br>
 
@@ -337,7 +338,7 @@ The stored XSS attack has been successful. Now everytime a user visits the revie
 ## Demos
 
 ## Clickjacking
-https://github.com/davidlarsson33/Web-shop-under-attack/assets/90555335/ce06a1a9-54a7-43dd-a9e4-579f5022754e
+https://github.com/davidlarsson33/Web-shop-under-attack/assets/90555335/453924e8-caa6-433e-847f-58abfb0bcf65
 
 
 ## SQL injectioon

