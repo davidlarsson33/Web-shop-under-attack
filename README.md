@@ -28,7 +28,7 @@ Instructions for how to perform the following attacks are provided:
 - Reflected XSS
 - Session fixation
 - Session hijacking
-- SQL injectioon
+- SQL injection
 - Stored XSS
 
 
@@ -84,7 +84,7 @@ docker-compose up
 
 1. Go to the attackers page: http://localhost:5000/clickjacker
 2. Click on the "Get an free iphone!"-button
-3. Open devloper tools and go to the network tab. It shows that a request has been made to another website due to the fact that the user has clicked a button on the website in the hidden iframe - which is an unknown act performed by the user. 
+3. Open developer tools and go to the network tab. It shows that a request has been made to another website due to the fact that the user has clicked a button on the website in the hidden iframe - which is an unknown act performed by the user. 
 
 ### Comments
 Once the user clicks on the button on this website her clicks will get hijacked. The victim thinks that she is going to win an iphone but in reality she performs some actions on another website (http://localhost/) embedded in an hidden iframe. In this case the user just navigates on the hidden website - which is harmless but it demonstrates the potential of the attack.
@@ -102,7 +102,7 @@ Once the user clicks on the button on this website her clicks will get hijacked.
 
 ### Attack phase
 4. Go to the login page of the victim website in another tab: http://localhost/login
-5. Use a regualar user's credentials to log in. Use the following credentials:
+5. Use a regular user's credentials to log in. Use the following credentials:
    - Email: kenneth@gmail.com
    - Password: 123AC!asdasdasd
 6. Go the the attacker's URL in another tab: http://localhost:5000/CSRF
@@ -120,7 +120,7 @@ The attacker would know how to construct a malicious POST request to the delete-
 ## Reflected XSS
 
 1. Go to the login page of the victim website: http://localhost/login
-2. Copy & paste the following i the email-adress-section and press submit:
+2. Copy & paste the following in the email-address section and press submit:
 
 ```html
 <script>
@@ -138,7 +138,7 @@ The attacker would know how to construct a malicious POST request to the delete-
 1. Go to http://localhost/ in a chrome tab in regular mode. Note that you are not logged in. Don't close this tab.
 2. Navigate to the reviews page & refresh the page. Note that you are still not logged in.
 
-3. Head over to the login-page in another icognito tab: http://localhost/login
+3. Head over to the login-page in another incognito tab: http://localhost/login
 4. Login as the attacker. You could use the following credentials:
    - Email: attacker@malicious.com
    - Password: XSS!1234!xss
@@ -182,7 +182,7 @@ PHPSESSID=af45a8819791c49a4d0320
 ```
 
 4. Open up another tab in chrome in regular mode
-5. Notice that you are not loged in regular mode no matter what page you visit
+5. Notice that you are not logged in regular mode no matter what page you visit
 
 
 ### Attack phase
@@ -206,7 +206,7 @@ Example:
 
 ### Post-attack phase
 
-8. Note that the user (in the second tab) gets logged in as the attacker when she browses the webpage. 
+8. Note that the user (in the second tab) gets logged in as the attacker when she browse the webpage. 
 
 ### Comments
 A user visitng the reviews-page will get logged in as the attacker when the user starts to navigates the website or refreshes the reviews page. This will work if the attacker has an ongoing session with the server and the client has javascript enabled in the browser.
@@ -215,17 +215,17 @@ A user visitng the reviews-page will get logged in as the attacker when the user
 
 ## Session hijacking
 
-In order for this to work a session token must be hijacked first. There is many ways this can be done. However, I have decided that it would be suitible to make use of the stored XSS attack to get a hold of a user's session token.
+In order for this to work a session token must be hijacked first. There is many ways this can be done. However, I have decided that it would be suitable to make use of the stored XSS attack to get a hold of a user's session token.
 
 ### Pre-attack stage:
 
 1. Use chrome and seach for the "ModHeader" extention
 2. Add the extention to chrome
-3. Enable the extention to be used in icognito mode
+3. Enable the extention to be used in incognito mode
 
 ### Attack stage:
 
-4. Go to the login page of the victim website in icognito mode: http://localhost/login
+4. Go to the login page of the victim website in incognito mode: http://localhost/login
 5. Use the attacker's credentials to login:
    - Email: attacker@malicious.com
    - Password: XSS!1234!xss
@@ -305,11 +305,11 @@ This attack opens up a major security threat for the website.
 ### Pre-attack phase
 
 1. Head over to the reviews section in a regular tab: http://localhost/reviews
-2. Open devloper tools & navigate to the console
+2. Open developer tools & navigate to the console
 3. Note that the console is empty
 
 ### Attack phase
-4. Go to the login page of the victim website in a second icognito tab: http://localhost/login
+4. Go to the login page of the victim website in a second incognito tab: http://localhost/login
 5. Use the attacker's credentials to login:
    - Email: attacker@malicious.com
    - Password: XSS!1234!xss
@@ -328,7 +328,7 @@ This attack opens up a major security threat for the website.
 9. Note the console log that was not there before. 
 
 ### Comments
-The stored XSS attack has been successful. Now everytime a user visits the reviews-section the payload of the attacker will get executed (given that js is enabeled in the client's browser). In this case every user will get an console log of the above statements. The console.log could be replaced by something more malicious as beeing done in the session hijacking attack below.
+The stored XSS attack has been successful. Now everytime a user visits the reviews-section the payload of the attacker will get executed (given that js is enabled in the client's browser). In this case every user will get an console log of the above statements. The console.log could be replaced by something more malicious as being done in the session hijacking attack below.
 
 <br>
 
@@ -341,7 +341,7 @@ The stored XSS attack has been successful. Now everytime a user visits the revie
 https://github.com/davidlarsson33/Web-shop-under-attack/assets/90555335/453924e8-caa6-433e-847f-58abfb0bcf65
 
 
-## SQL injectioon
+## SQL injection
 https://github.com/davidlarsson33/Web-shop-under-attack/assets/90555335/c5b4065d-26c7-4ffe-877e-c637884f5f4f
 
 ## Reflected XSS
